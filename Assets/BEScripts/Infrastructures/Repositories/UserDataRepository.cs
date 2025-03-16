@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Assets.BEScripts.Infrastructures.Models.PlayFab;
 using Cysharp.Threading.Tasks;
 
@@ -13,6 +14,11 @@ namespace Assets.BEScripts.Infrastructures.Repositories
         public async UniTask GetAllUserData()
         {
             await PlayFabController.userData.BringAllUSerDataRequest();
+        }
+
+        public async UniTask CreateUserData(Dictionary<string, string> data)
+        {
+            await PlayFabController.userData.UpdateUserDataRequest(data);
         }
     }
 }
