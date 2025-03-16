@@ -39,7 +39,7 @@ namespace Assets.FEScripts.Scenes.Load.CanvasUI
         public void UpdateSlider(float _value)
         {
             loadSlider.value = _value;
-            float percent = Mathf.Ceil(_value * 100);
+            float percent = Mathf.Ceil(_value);
             loadText.text = $"Loading...{percent}%";
         }
     }
