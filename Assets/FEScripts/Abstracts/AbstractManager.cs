@@ -27,13 +27,13 @@ namespace Assets.FEScripts.Abstracts
         /// Entityの初期値を設定する
         /// </summary>
         /// <returns></returns>
-        protected virtual UniTask InitEntity()
+        protected virtual async UniTask InitEntity()
         {
             // ログ
             Debug.Log("Init Entity");
             // GameSceneから引き継いだEntityを設定する
             entity = GameObject.FindObjectOfType<OriginEntity>();
-            return UniTask.CompletedTask;
+            await UniTask.Delay(0);
         }
 
         /// <summary>
