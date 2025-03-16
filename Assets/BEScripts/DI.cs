@@ -6,12 +6,20 @@ namespace Assets.BEScripts
 {
     public static class DI
     {
+        // Service
         private static LoginService loginService = new LoginService(
             new LoginRepository()
         );
+        private static BringUserDataService bringUserDataService = new BringUserDataService(
+            new UserDataRepository()
+        );
 
+        // Controller
         public static LoginController loginController = new LoginController(
             loginService
+        );
+        public static BringUserDataController bringUserDataController = new BringUserDataController(
+            bringUserDataService
         );
     }
 }
