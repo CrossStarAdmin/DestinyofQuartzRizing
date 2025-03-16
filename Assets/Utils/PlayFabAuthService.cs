@@ -27,7 +27,8 @@ public enum Authtypes
     Google
 }
 
-public class PlayFabAuthService  {
+public class PlayFabAuthService
+{
 
     //Events to subscribe to for this service
     public delegate void DisplayAuthenticationEvent();
@@ -35,7 +36,7 @@ public class PlayFabAuthService  {
 
     public delegate void LoginSuccessEvent(LoginResult success);
     public static event LoginSuccessEvent OnLoginSuccess;
-    
+
     public delegate void PlayFabErrorEvent(PlayFabError error);
     public static event PlayFabErrorEvent OnPlayFabError;
 
@@ -59,10 +60,11 @@ public class PlayFabAuthService  {
     private const string _PlayFabRememberMeIdKey = "PlayFabIdPassGuid";
     private const string _PlayFabAuthTypeKey = "PlayFabAuthType";
 
-    public static PlayFabAuthService Instance {
+    public static PlayFabAuthService Instance
+    {
         get
         {
-            if(_instance == null)
+            if (_instance == null)
             {
                 _instance = new PlayFabAuthService();
             }
@@ -81,25 +83,31 @@ public class PlayFabAuthService  {
     /// Remember the user next time they log in
     /// This is used for Auto-Login purpose.
     /// </summary>
-    public bool RememberMe {
-        get {
+    public bool RememberMe
+    {
+        get
+        {
             return PlayerPrefs.GetInt(_LoginRememberKey, 0) == 0 ? false : true;
         }
-        set {
+        set
+        {
             PlayerPrefs.SetInt(_LoginRememberKey, value ? 1 : 0);
         }
-    }  
-    
+    }
+
     /// <summary>
     /// Remember the type of authenticate for the user
     /// </summary>
-    public Authtypes AuthType {
-        get {
+    public Authtypes AuthType
+    {
+        get
+        {
             return (Authtypes)PlayerPrefs.GetInt(_PlayFabAuthTypeKey, 0);
         }
-        set {
+        set
+        {
 
-            PlayerPrefs.SetInt(_PlayFabAuthTypeKey, (int) value);
+            PlayerPrefs.SetInt(_PlayFabAuthTypeKey, (int)value);
         }
     }
 
@@ -109,7 +117,8 @@ public class PlayFabAuthService  {
     /// </summary>
     private string RememberMeId
     {
-        get {
+        get
+        {
             return PlayerPrefs.GetString(_PlayFabRememberMeIdKey, "");
         }
         set
@@ -244,7 +253,8 @@ public class PlayFabAuthService  {
                 RememberMeId = Guid.NewGuid().ToString();
                 AuthType = Authtypes.EmailAndPassword;
                 //Fire and forget, but link a custom ID to this PlayFab Account.
-                PlayFabClientAPI.LinkCustomID(new LinkCustomIDRequest() {
+                PlayFabClientAPI.LinkCustomID(new LinkCustomIDRequest()
+                {
                     CustomId = RememberMeId,
                     ForceLink = ForceLink
                 }, null, null);
@@ -273,9 +283,10 @@ public class PlayFabAuthService  {
     {
         //Any time we attempt to register a player, first silently authenticate the player.
         //This will retain the players True Origination (Android, iOS, Desktop)
-        SilentlyAuthenticate((result) => {
-            
-            if(result == null)
+        SilentlyAuthenticate((result) =>
+        {
+
+            if (result == null)
             {
                 //something went wrong with Silent Authentication, Check the debug console.
                 OnPlayFabError.Invoke(new PlayFabError()
@@ -290,11 +301,13 @@ public class PlayFabAuthService  {
             //this is okay, because the next attempt will still use the same silent account that was already created.
 
             //Now add our username & password.
-            PlayFabClientAPI.AddUsernamePassword(new AddUsernamePasswordRequest() {
+            PlayFabClientAPI.AddUsernamePassword(new AddUsernamePasswordRequest()
+            {
                 Username = !string.IsNullOrEmpty(Username) ? Username : result.PlayFabId, //Because it is required & Unique and not supplied by User.
                 Email = Email,
                 Password = Password,
-            }, (addResult) => {
+            }, (addResult) =>
+            {
                 if (OnLoginSuccess != null)
                 {
                     //Store identity and session
@@ -320,7 +333,8 @@ public class PlayFabAuthService  {
                     //Report login result back to subscriber.
                     OnLoginSuccess.Invoke(result);
                 }
-            }, (error) => {
+            }, (error) =>
+            {
                 if (OnPlayFabError != null)
                 {
                     //Report error result back to subscriber
@@ -409,7 +423,7 @@ public class PlayFabAuthService  {
 
     private void AuthenticateSteam()
     {
-        
+
     }
 
 
@@ -502,7 +516,8 @@ public class PlayFabAuthService  {
             CustomId = SystemInfo.deviceUniqueIdentifier,
             CreateAccount = true,
             InfoRequestParameters = InfoRequestParams
-        }, (result) => {
+        }, (result) =>
+        {
             //Store Identity and session
             _playFabId = result.PlayFabId;
             _sessionTicket = result.SessionTicket;
@@ -518,7 +533,8 @@ public class PlayFabAuthService  {
                 //report login result back to the caller
                 callback.Invoke(result);
             }
-        }, (error) => {
+        }, (error) =>
+        {
             //report errro back to the subscriber
             if (callback == null && OnPlayFabError != null)
             {

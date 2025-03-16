@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using Assets.BEScripts.Domains.Abstracts;
 using PlayFab.ClientModels;
-using UnityEngine;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.BEScripts.Infrastructures.Models.PlayFab
@@ -17,6 +14,7 @@ namespace Assets.BEScripts.Infrastructures.Models.PlayFab
 
         public async UniTask LoginPlayFab()
         {
+            BeforeFunction();
             PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
             while (_isProcess)
             {

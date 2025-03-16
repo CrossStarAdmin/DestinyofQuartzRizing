@@ -4,7 +4,7 @@ using Assets.BEScripts.UseCases.Services;
 
 namespace Assets.BEScripts
 {
-    public class DI
+    public static class DI
     {
         private static LoginService loginService = new LoginService(
             new LoginRepository()
