@@ -16,7 +16,7 @@ namespace Assets.FEScripts.Scenes.Load
         {
             _step++;
         }
-        public float nowPercent
+        public float percent
         {
             get { return _step * (100 / _maxStep); }
         }

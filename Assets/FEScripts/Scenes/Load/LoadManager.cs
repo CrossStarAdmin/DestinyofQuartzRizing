@@ -38,7 +38,7 @@ namespace Assets.FEScripts.Scene.Load
         {
             entity.AddStep();
             ui.loadCanvasUI.UpdateSlider(
-                entity.nowPercent
+                entity.percent
             );
         }
     }
