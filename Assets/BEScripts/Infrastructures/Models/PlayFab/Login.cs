@@ -14,16 +14,11 @@ namespace Assets.BEScripts.Infrastructures.Models.PlayFab
 
         public async UniTask LoginPlayFab()
         {
-            BeforeFunction();
-            PlayFabAuthService.Instance.Authenticate(Authtypes.Silent);
-            while (_isProcess)
-            {
-                await UniTask.Delay(500);
-            }
-            if (!_isSuccess)
-            {
-                throw new System.Exception("LoginPlayFab Failed");
-            }
+            await Function(
+                () => PlayFabAuthService.Instance.Authenticate(Authtypes.Silent),
+                "LoginPlayFab Success",
+                "LoginPlayFab Failed"
+            );
         }
 
         protected void LoginSuccessFunction(LoginResult _result)
