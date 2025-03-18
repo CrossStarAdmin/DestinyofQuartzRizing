@@ -1,3 +1,5 @@
+using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.FEScripts.Scenes.Load
@@ -5,11 +7,12 @@ namespace Assets.FEScripts.Scenes.Load
     public class LoadEntity : MonoBehaviour
     {
         // ロードを管理するプロパティ
-        protected int _maxStep;
+        private UniTask[] _loadUniTasks;
         protected int _step = 0;
-        public int maxStep
+        public UniTask[] loadUniTasks
         {
-            set { _maxStep = value; }
+            get { return _loadUniTasks; }
+            set { _loadUniTasks = value; }
         }
 
         public void AddStep()
@@ -18,7 +21,7 @@ namespace Assets.FEScripts.Scenes.Load
         }
         public float percent
         {
-            get { return _step * (100 / _maxStep); }
+            get { return _step * (100 / _loadUniTasks.Length); }
         }
     }
 }

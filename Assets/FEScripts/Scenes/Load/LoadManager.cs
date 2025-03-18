@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 using System.Threading.Tasks;
 using Assets.BEScripts;
 using Assets.BEScripts.Presentations.Controllers;
@@ -15,7 +15,10 @@ namespace Assets.FEScripts.Scene.Load
         {
             await base.InitEntity();
             // Entityの初期値を設定する
-            entity.maxStep = 1;
+            entity.loadUniTasks = new UniTask[] {
+                DI.loginController.Execute(),         // Step1; ログイン処理の実行
+                DI.bringUserDataController.Execute()  // Step2: UserDataを取得
+            };
         }
         protected override void InitEvent()
         {
@@ -29,9 +32,12 @@ namespace Assets.FEScripts.Scene.Load
 
         protected async UniTask LoadFunction()
         {
-            // Step1: ログイン処理を実行
-            await DI.loginController.Execute();
-            UpdateSlider();
+            foreach (UniTask uniTask in entity.loadUniTasks)
+            {
+                await uniTask;
+                UpdateSlider();
+            }
+
         }
 
         protected void UpdateSlider()
