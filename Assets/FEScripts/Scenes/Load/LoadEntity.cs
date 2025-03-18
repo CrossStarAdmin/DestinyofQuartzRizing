@@ -7,12 +7,13 @@ namespace Assets.FEScripts.Scenes.Load
     public class LoadEntity : MonoBehaviour
     {
         // ロードを管理するプロパティ
-        private UniTask[] _loadUniTasks;
+        // private UniTask[] _loadUniTasks;
+        protected int _maxStep;
         protected int _step = 0;
-        public UniTask[] loadUniTasks
+        public int maxStep
         {
-            get { return _loadUniTasks; }
-            set { _loadUniTasks = value; }
+            get { return _maxStep; }
+            set { _maxStep = value; }
         }
 
         public void AddStep()
@@ -21,7 +22,7 @@ namespace Assets.FEScripts.Scenes.Load
         }
         public float percent
         {
-            get { return _step * (100 / _loadUniTasks.Length); }
+            get { return _step * (100 / _maxStep); }
         }
     }
 }

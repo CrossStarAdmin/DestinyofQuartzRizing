@@ -23,7 +23,10 @@ namespace Assets.BEScripts.Infrastructures.Models.PlayFab
             await Function(
                 () =>
                 {
-                    var request = new GetUserDataRequest();
+                    var request = new GetUserDataRequest()
+                    {
+                        PlayFabId = PlayFabAuthService.PlayFabId
+                    };
                     PlayFabClientAPI.GetUserData(
                         request,
                         BringAllUserDataSuccess,
