@@ -16,6 +16,11 @@ namespace Assets.BEScripts.Infrastructures.Repositories
             await PlayFabController.userData.BringAllUSerDataRequest();
         }
 
+        public async UniTask<string> GetUserData(string key)
+        {
+            return await PlayFabController.userData.GetUserData(key);
+        }
+
         public async UniTask CreateUserData(Dictionary<string, string> data)
         {
             await PlayFabController.userData.UpdateUserDataRequest(data);

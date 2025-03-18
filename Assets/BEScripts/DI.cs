@@ -13,6 +13,9 @@ namespace Assets.BEScripts
         private static BringUserDataService bringUserDataService = new BringUserDataService(
             new UserDataRepository()
         );
+        private static GetUserDataService getUserDataService = new GetUserDataService(
+            new UserDataRepository()
+        );
         private static CreateUserDataService createUserDataService = new CreateUserDataService(
             new UserDataRepository()
         );
@@ -23,6 +26,9 @@ namespace Assets.BEScripts
         );
         public static BringUserDataController bringUserDataController = new BringUserDataController(
             bringUserDataService
+        );
+        public static GetUserDataController getUserDataController = new GetUserDataController(
+            getUserDataService
         );
         public static CreateUserDataController createUserDataController = new CreateUserDataController(
             createUserDataService
