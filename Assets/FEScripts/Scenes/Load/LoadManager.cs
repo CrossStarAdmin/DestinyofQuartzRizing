@@ -14,7 +14,7 @@ namespace Assets.FEScripts.Scene.Load
         protected override async UniTask InitEntity()
         {
             await base.InitEntity();
-            entity.maxStep = 2;
+            entity.maxStep = 5;
         }
         protected override void InitEvent()
         {
@@ -31,10 +31,13 @@ namespace Assets.FEScripts.Scene.Load
             // Step1: ログイン処理の実行
             await DI.loginController.Execute();
             UpdateSlider();
-            // Step2: UserDataを取得
+            // Step2: TitleDataを取得
+            await DI.bringTitleDataController.Execute();
+            UpdateSlider();
+            // Step3: UserDataを取得
             await DI.bringUserDataController.Execute();
             UpdateSlider();
-            // Step3: ユーザーのバージョンを取得
+            // Step4: ユーザーのバージョンを取得
             GetUserDataResponse response = await DI.getUserDataController.Execute(
                 new GetUserDataRequest()
                 {
@@ -42,7 +45,7 @@ namespace Assets.FEScripts.Scene.Load
                 }
             );
             UpdateSlider();
-            // Step4: バージョンの確認・ユーザーデータの更新
+            // Step5: バージョンの確認・ユーザーデータの更新
             await CreateUserData(response.data);
             UpdateSlider();
         }
