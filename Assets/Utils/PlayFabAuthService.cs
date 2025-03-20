@@ -476,14 +476,16 @@ public class PlayFabAuthService
         });
 
 #elif  UNITY_IPHONE || UNITY_IOS && !UNITY_EDITOR
-        PlayFabClientAPI.LoginWithIOSDeviceID(new LoginWithIOSDeviceIDRequest() {
+        PlayFabClientAPI.LoginWithIOSDeviceID(new LoginWithIOSDeviceIDRequest()
+        {
             TitleId = PlayFabSettings.TitleId,
-            DeviceModel = SystemInfo.deviceModel, 
+            DeviceModel = SystemInfo.deviceModel,
             OS = SystemInfo.operatingSystem,
             DeviceId = SystemInfo.deviceUniqueIdentifier,
             CreateAccount = true,
             InfoRequestParameters = InfoRequestParams
-        }, (result) => {
+        }, (result) =>
+        {
             //Store Identity and session
             _playFabId = result.PlayFabId;
             _sessionTicket = result.SessionTicket;
@@ -493,16 +495,21 @@ public class PlayFabAuthService
             {
                 //report login result back to the subscriber
                 OnLoginSuccess.Invoke(result);
-            }else if (callback != null)
+            }
+            else if (callback != null)
             {
                 //report login result back to the caller
                 callback.Invoke(result);
             }
-        }, (error) => {
+        }, (error) =>
+        {
             //report errro back to the subscriber
-            if(callback == null && OnPlayFabError != null){
+            if (callback == null && OnPlayFabError != null)
+            {
                 OnPlayFabError.Invoke(error);
-            }else{
+            }
+            else
+            {
                 //make sure the loop completes, callback with null
                 callback.Invoke(null);
                 //Output what went wrong to the console.
