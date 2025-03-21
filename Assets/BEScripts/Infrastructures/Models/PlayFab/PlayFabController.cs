@@ -25,6 +25,19 @@ namespace Assets.BEScripts.Infrastructures.Models.PlayFab
         }
 
         // -----------------------------
+        // TitleData
+        // -----------------------------
+        private static TitleData _titleData;
+        public static TitleData titleData
+        {
+            get { return _titleData; }
+        }
+        public static void InitializeTitleData()
+        {
+            _titleData = new TitleData();
+        }
+
+        // -----------------------------
         // UserData
         // -----------------------------
         // UserDataクラスを取得するためのプロパティ
