@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Assets.BEScripts.Presentations.Requests;
 
-namespace Assets.BEScripts.UseCases.Dto
+namespace Assets.BEScripts.UseCases.UserData.Dto
 {
     public class CreateUserDataRequestDto
     {

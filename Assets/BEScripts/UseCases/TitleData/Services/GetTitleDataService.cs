@@ -1,8 +1,8 @@
 using Assets.BEScripts.Infrastructures.Repositories;
-using Assets.BEScripts.UseCases.Dto;
+using Assets.BEScripts.UseCases.TitleData.Dto;
 using Cysharp.Threading.Tasks;
 
-namespace Assets.BEScripts.UseCases.Services
+namespace Assets.BEScripts.UseCases.TitleData.Services
 {
     public class GetTitleDataService
     {

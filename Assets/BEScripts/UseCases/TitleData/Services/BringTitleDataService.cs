@@ -1,7 +1,7 @@
 using Assets.BEScripts.Infrastructures.Repositories;
 using Cysharp.Threading.Tasks;
 
-namespace Assets.BEScripts.UseCases.Services
+namespace Assets.BEScripts.UseCases.TitleData.Services
 {
     public class BringTitleDataService
     {

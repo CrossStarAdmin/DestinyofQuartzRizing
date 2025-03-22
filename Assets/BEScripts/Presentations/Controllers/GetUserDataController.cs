@@ -1,7 +1,7 @@
 using Assets.BEScripts.Presentations.Requests;
 using Assets.BEScripts.Presentations.Responses;
-using Assets.BEScripts.UseCases.Dto;
-using Assets.BEScripts.UseCases.Services;
+using Assets.BEScripts.UseCases.UserData.Dto;
+using Assets.BEScripts.UseCases.UserData.Services;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.BEScripts.Presentations.Controllers

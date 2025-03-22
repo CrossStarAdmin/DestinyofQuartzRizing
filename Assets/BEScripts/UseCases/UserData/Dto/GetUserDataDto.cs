@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Assets.BEScripts.Presentations.Requests;
 
-namespace Assets.BEScripts.UseCases.Dto
+namespace Assets.BEScripts.UseCases.UserData.Dto
 {
-    public class GetTitleDataRequestDto
+    public class GetUserDataRequestDto
     {
         private readonly string _key;
         public string key
@@ -11,15 +11,15 @@ namespace Assets.BEScripts.UseCases.Dto
             get { return _key; }
         }
 
-        public GetTitleDataRequestDto(
-            GetTitleDataRequest request
+        public GetUserDataRequestDto(
+            GetUserDataRequest request
         )
         {
             _key = request.key;
         }
     }
 
-    public class GetTitleDataResponseDto
+    public class GetUserDataResponseDto
     {
         private readonly string _data;
         public string data
@@ -27,7 +27,7 @@ namespace Assets.BEScripts.UseCases.Dto
             get { return _data; }
         }
 
-        public GetTitleDataResponseDto(
+        public GetUserDataResponseDto(
             string data
         )
         {
