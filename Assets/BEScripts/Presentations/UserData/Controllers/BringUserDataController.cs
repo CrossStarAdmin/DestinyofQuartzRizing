@@ -1,7 +1,7 @@
 using Assets.BEScripts.UseCases.UserData.Services;
 using Cysharp.Threading.Tasks;
 
-namespace Assets.BEScripts.Presentations.Controllers
+namespace Assets.BEScripts.Presentations.UserData.Controllers
 {
     public class BringUserDataController
     {

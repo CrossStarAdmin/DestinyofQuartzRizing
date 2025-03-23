@@ -1,7 +1,7 @@
 using Assets.BEScripts.UseCases.Login.Services;
 using Cysharp.Threading.Tasks;
 
-namespace Assets.BEScripts.Presentations.Controllers
+namespace Assets.BEScripts.Presentations.Login.Controllers
 {
     public class LoginController
     {

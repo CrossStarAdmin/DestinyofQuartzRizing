@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Assets.BEScripts;
-using Assets.BEScripts.Presentations.Requests;
-using Assets.BEScripts.Presentations.Responses;
+using Assets.BEScripts.Presentations.UserData.Requests;
+using Assets.BEScripts.Presentations.UserData.Responses;
 using Assets.FEScripts.Abstracts;
 using Assets.FEScripts.Scenes.Load;
 using Cysharp.Threading.Tasks;

@@ -1,10 +1,10 @@
-using Assets.BEScripts.Presentations.Requests;
-using Assets.BEScripts.Presentations.Responses;
+using Assets.BEScripts.Presentations.TitleData.Requests;
+using Assets.BEScripts.Presentations.TitleData.Responses;
 using Assets.BEScripts.UseCases.TitleData.Dto;
 using Assets.BEScripts.UseCases.TitleData.Services;
 using Cysharp.Threading.Tasks;
 
-namespace Assets.BEScripts.Presentations.Controllers
+namespace Assets.BEScripts.Presentations.TitleData.Controllers
 {
     public class GetTitleDataController
     {

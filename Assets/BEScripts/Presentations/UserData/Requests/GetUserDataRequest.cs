@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 
-namespace Assets.BEScripts.Presentations.Requests
+namespace Assets.BEScripts.Presentations.UserData.Requests
 {
     [System.Serializable]
-    public class GetTitleDataRequest
+    public class GetUserDataRequest
     {
         public string key;
     }

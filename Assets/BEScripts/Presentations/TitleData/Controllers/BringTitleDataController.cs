@@ -1,7 +1,7 @@
 using Assets.BEScripts.UseCases.TitleData.Services;
 using Cysharp.Threading.Tasks;
 
-namespace Assets.BEScripts.Presentations.Controllers
+namespace Assets.BEScripts.Presentations.TitleData.Controllers
 {
     public class BringTitleDataController
     {

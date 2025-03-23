@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Assets.BEScripts.Presentations.Requests;
+using Assets.BEScripts.Presentations.TitleData.Requests;
 
 namespace Assets.BEScripts.UseCases.TitleData.Dto
 {
