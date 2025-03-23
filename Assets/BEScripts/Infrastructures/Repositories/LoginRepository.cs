@@ -7,12 +7,12 @@ namespace Assets.BEScripts.Infrastructures.Repositories
     {
         public LoginRepository()
         {
-            PlayFabController.InitializeLogin();
+            PlayFabModel.InitializeLogin();
         }
 
         public async UniTask LoginPlayFab()
         {
-            await PlayFabController.login.LoginPlayFab();
+            await PlayFabModel.login.LoginPlayFab();
         }
     }
 }

@@ -8,22 +8,22 @@ namespace Assets.BEScripts.Infrastructures.Repositories
     {
         public UserDataRepository()
         {
-            PlayFabController.InitializeUserData();
+            PlayFabModel.InitializeUserData();
         }
 
         public async UniTask GetAllUserData()
         {
-            await PlayFabController.userData.BringAllUSerDataRequest();
+            await PlayFabModel.userData.BringAllUserDataRequest();
         }
 
         public async UniTask<string> GetUserData(string key)
         {
-            return await PlayFabController.userData.GetUserData(key);
+            return await PlayFabModel.userData.GetUserData(key);
         }
 
         public async UniTask CreateUserData(Dictionary<string, string> data)
         {
-            await PlayFabController.userData.UpdateUserDataRequest(data);
+            await PlayFabModel.userData.UpdateUserDataRequest(data);
         }
     }
 }

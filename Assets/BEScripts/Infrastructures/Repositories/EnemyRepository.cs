@@ -13,7 +13,7 @@ namespace Assets.BEScripts.Infrastructures.Repositories
 
         public async UniTask Initialize()
         {
-            string data = await PlayFabController.titleData.GetTitleData("Enemy");
+            string data = await PlayFabModel.titleData.GetTitleData("Enemy");
             _model = JsonConvert.DeserializeObject<EnemyModelType>(data);
         }
 

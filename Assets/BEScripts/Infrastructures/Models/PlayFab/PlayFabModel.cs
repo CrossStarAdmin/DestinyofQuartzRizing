@@ -6,7 +6,7 @@ using Assets.BEScripts.Infrastructures.Models.PlayFab;
 
 namespace Assets.BEScripts.Infrastructures.Models.PlayFab
 {
-    public static class PlayFabController
+    public static class PlayFabModel
     {
         // -----------------------------
         // Login

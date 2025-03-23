@@ -7,17 +7,17 @@ namespace Assets.BEScripts.Infrastructures.Repositories
     {
         public TitleDataRepository()
         {
-            PlayFabController.InitializeTitleData();
+            PlayFabModel.InitializeTitleData();
         }
 
         public async UniTask GetAllTitleData()
         {
-            await PlayFabController.titleData.BringAllTitleDataRequest();
+            await PlayFabModel.titleData.BringAllTitleDataRequest();
         }
 
         public async UniTask<string> GetTitleData(string key)
         {
-            return await PlayFabController.titleData.GetTitleData(key);
+            return await PlayFabModel.titleData.GetTitleData(key);
         }
     }
 }
