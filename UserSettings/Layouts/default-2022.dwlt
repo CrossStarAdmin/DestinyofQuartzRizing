@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Console
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 15
+  controlID: 52
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 16
+  controlID: 53
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 17
+  controlID: 43
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: PlayFabEditor
+  m_Name: SceneHierarchyWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -192,14 +192,14 @@ MonoBehaviour:
     y: 0
     width: 512
     height: 554
-  m_MinSize: {x: 321, y: 21}
+  m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 12}
+  m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
   - {fileID: 12}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -256,7 +256,7 @@ MonoBehaviour:
   - {fileID: 13}
   - {fileID: 20}
   m_Selected: 3
-  m_LastSelected: 2
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
+  m_Name: TestRunnerWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -276,14 +276,14 @@ MonoBehaviour:
     y: 0
     width: 692
     height: 939
-  m_MinSize: {x: 276, y: 71}
+  m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 21}
+  m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 21}
   - {fileID: 22}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -391,21 +391,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 16fbffff
+      m_ExpandedIDs: 2c52a0fe1e53a0fe6c53a0fe5854a0feaa54a0fe1255a0fefa55a0fee456a0fee057a0fe0059a0feee59a0fed85aa0fec85ba0febe5ca0fe925da0feda5da0fe786fa0fe7070a0fe6871a0febc77a0fef478a0fe5079a0fef8faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: LoadCanvas
+        m_OriginalName: LoadCanvas
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 25634
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -784,9 +784,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.3736144, y: -0.16135639, z: 387.18228}
+    m_Target: {x: 4.812158, y: 3.3482313, z: 905.9032}
     speed: 2
-    m_Value: {x: 1.3736144, y: -0.16135639, z: 387.18228}
+    m_Value: {x: 4.812158, y: 3.3482313, z: 905.9032}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -836,9 +836,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 6.516137
+    m_Target: 13.720028
     speed: 2
-    m_Value: 6.516137
+    m_Value: 13.720028
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -883,7 +883,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 512
+    x: -1408
     y: 73
     width: 714
     height: 533
@@ -1006,7 +1006,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/PlayFabSDK/Shared/Public
+    - Assets/BEScripts/Presentations
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1014,16 +1014,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/PlayFabSDK/Shared/Public
+  - Assets/BEScripts/Presentations
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\beron\OneDrive\Documents\AppRepository\UnityAppTemplate
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 312}
-    m_SelectedIDs: b8660000
-    m_LastClickedID: 26296
-    m_ExpandedIDs: 000000008464000086640000
+    scrollPos: {x: 0, y: 31}
+    m_SelectedIDs: bc650000
+    m_LastClickedID: 26044
+    m_ExpandedIDs: 00000000a4640000a6640000aa640000246500002865000086650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1051,7 +1051,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008464000086640000
+    m_ExpandedIDs: 00000000a4640000a6640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300000213010000650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1167,9 +1167,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 168}
-    m_SelectedIDs: 2e660000
-    m_LastClickedID: 26158
-    m_ExpandedIDs: 000000008464000086640000
+    m_SelectedIDs: 38650000
+    m_LastClickedID: 25912
+    m_ExpandedIDs: 00000000a4640000a6640000246500003a6500003c6500003e650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1197,7 +1197,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008464000086640000
+    m_ExpandedIDs: 00000000a4640000a6640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1222,8 +1222,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 62e4ffff
-    m_LastClickedInstanceID: -7070
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 3ca1000014660000de650000366d00001a6e00000a660000d46c0000
     m_RenameOverlay:
@@ -1273,7 +1273,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
+    x: -1920
     y: 627
     width: 1227
     height: 364
@@ -1313,9 +1313,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a0640000
-    m_LastClickedID: 25760
-    m_ExpandedIDs: 000000008464000086640000
+    m_SelectedIDs: 24650000
+    m_LastClickedID: 25892
+    m_ExpandedIDs: 00000000a4640000a6640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1343,7 +1343,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008464000086640000
+    m_ExpandedIDs: 00000000a4640000a6640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1368,8 +1368,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: c6f9ffff
-    m_LastClickedInstanceID: -1594
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: a6650000366d0000de6500000a660000
     m_RenameOverlay:
@@ -1515,7 +1515,7 @@ MonoBehaviour:
     m_SaveData: []
     m_OverlaysVisible: 1
   m_Spl:
-    ID: 618
+    ID: 1468
     splitterInitialOffset: 704
     currentActiveSplitter: -1
     realSizes:
@@ -1813,9 +1813,9 @@ MonoBehaviour:
       uniqueId: '[UnityAppTemplate][suite]'
       name: UnityAppTemplate
       fullName: UnityAppTemplate
-      resultStatus: 0
-      duration: 0
-      messages: 
+      resultStatus: 2
+      duration: 0.0519183
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -1825,13 +1825,150 @@ MonoBehaviour:
       categories: []
       parentId: 
       parentUniqueId: 
-    m_ResultText: ProtoRPGCardBattle (0.445s)
-    m_ResultStacktrace: 
+    - id: 1003
+      uniqueId: '[BETests.dll][suite]'
+      name: BETests.dll
+      fullName: C:/Users/beron/OneDrive/Documents/AppRepository/UnityAppTemplate/Library/ScriptAssemblies/BETests.dll
+      resultStatus: 2
+      duration: 0.0450642
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1000
+      parentUniqueId: '[UnityAppTemplate][suite]'
+    - id: 1004
+      uniqueId: BETests.dll/[Assets][suite]
+      name: Assets
+      fullName: Assets
+      resultStatus: 2
+      duration: 0.0447765
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1003
+      parentUniqueId: '[BETests.dll][suite]'
+    - id: 1005
+      uniqueId: BETests.dll/Assets/[BEScripts][suite]
+      name: BEScripts
+      fullName: Assets.BEScripts
+      resultStatus: 2
+      duration: 0.0446503
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1004
+      parentUniqueId: BETests.dll/[Assets][suite]
+    - id: 1006
+      uniqueId: BETests.dll/Assets/BEScripts/[BETests][suite]
+      name: BETests
+      fullName: Assets.BEScripts.BETests
+      resultStatus: 2
+      duration: 0.0445425
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1005
+      parentUniqueId: BETests.dll/Assets/[BEScripts][suite]
+    - id: 1007
+      uniqueId: BETests.dll/Assets/BEScripts/BETests/[Units][suite]
+      name: Units
+      fullName: Assets.BEScripts.BETests.Units
+      resultStatus: 2
+      duration: 0.0444344
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1006
+      parentUniqueId: BETests.dll/Assets/BEScripts/[BETests][suite]
+    - id: 1008
+      uniqueId: BETests.dll/Assets/BEScripts/BETests/Units/[BETests][Assets.BEScripts.BETests.Units.Entities][suite]
+      name: Entities
+      fullName: Assets.BEScripts.BETests.Units.Entities
+      resultStatus: 1
+      duration: 0.0202341
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1007
+      parentUniqueId: BETests.dll/Assets/BEScripts/BETests/[Units][suite]
+    - id: 1001
+      uniqueId: BETests.dll/Assets/BEScripts/BETests/Units/Entities/[BETests][Assets.BEScripts.BETests.Units.Entities.TestEnemy][suite]
+      name: TestEnemy
+      fullName: Assets.BEScripts.BETests.Units.Entities.TestEnemy
+      resultStatus: 1
+      duration: 0.0194129
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1008
+      parentUniqueId: BETests.dll/Assets/BEScripts/BETests/Units/[BETests][Assets.BEScripts.BETests.Units.Entities][suite]
+    - id: 1002
+      uniqueId: "BETests.dll/Assets/BEScripts/BETests/Units/Entities/TestEnemy/[BETests][Assets.BEScripts.BETests.Units.Entities.TestEnemy.CreateFromModel\u3067Entity\u304C\u6B63\u5E38\u306B\u3067\u304D\u308B]"
+      name: "CreateFromModel\u3067Entity\u304C\u6B63\u5E38\u306B\u3067\u304D\u308B"
+      fullName: "Assets.BEScripts.BETests.Units.Entities.TestEnemy.CreateFromModel\u3067Entity\u304C\u6B63\u5E38\u306B\u3067\u304D\u308B"
+      resultStatus: 1
+      duration: 0.0092685
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: BETests.dll/Assets/BEScripts/BETests/Units/Entities/[BETests][Assets.BEScripts.BETests.Units.Entities.TestEnemy][suite]
+    m_ResultText: "FindAll\u3067\u30C7\u30FC\u30BF\u3092\u53D6\u5F97\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u308B
+      (0.033s)\n---\nSystem.NullReferenceException : Object reference not set to
+      an instance of an object\n---\nat NUnit.Framework.Internal.AsyncInvocationRegion+AsyncTaskInvocationRegion.WaitForPendingOperationsToComplete
+      (System.Object invocationResult) [0x00016] in <956b82cfdef641c6bc6a0e5b19798f05>:0
+      \r\n  at NUnit.Framework.Internal.Commands.TestMethodCommand.RunAsyncTestMethod
+      (NUnit.Framework.Internal.ITestExecutionContext context) [0x00038] in <956b82cfdef641c6bc6a0e5b19798f05>:0\n---\nSilent\r\nPlayFab.ClientModels.LoginWithIOSDeviceIDRequest"
+    m_ResultStacktrace: "  at NUnit.Framework.Internal.AsyncInvocationRegion+AsyncTaskInvocationRegion.WaitForPendingOperationsToComplete
+      (System.Object invocationResult) [0x00016] in <956b82cfdef641c6bc6a0e5b19798f05>:0
+      \r\n  at NUnit.Framework.Internal.Commands.TestMethodCommand.RunAsyncTestMethod
+      (NUnit.Framework.Internal.ITestExecutionContext context) [0x00038] in <956b82cfdef641c6bc6a0e5b19798f05>:0 "
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 9bb89014
-      m_LastClickedID: 345028763
-      m_ExpandedIDs: 2d531d82b64dcc89517ef48ecd6594bb4e588bc5ca1cb8d4c97ab8edd202c7eee557abf79ad409f9ba0682fae28d2dfd6f8f28099bb89014e7664317da022b33f074c93d5f5eaf3f96f6eb3f91ef334afb1e3f5f081b725f1661b8691c9fb076ffffff7f
+      m_SelectedIDs: d9e4463a
+      m_LastClickedID: 977724633
+      m_ExpandedIDs: 2d531d82b64dcc89517ef48ecd6594bb4e588bc5ca1cb8d4c97ab8edd202c7eee557abf79ad409f9ba0682fae28d2dfd6f8f28099bb89014e7664317da022b33f074c93d5f5eaf3f96f6eb3fbb181d4791ef334af972b24d78cc4c54fb1e3f5f081b725f1661b86971c34f741c9fb076ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

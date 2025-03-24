@@ -43,14 +43,14 @@ namespace Assets.BEScripts.BETests.Data.TestData
             return _models.list[index];
         }
 
-        public Enemy[] GetEntities()
+        public EnemyEntity[] GetEntities()
         {
-            return Array.ConvertAll(_models.list, Enemy.CreateFromModel);
+            return Array.ConvertAll(_models.list, EnemyEntity.CreateFromModel);
         }
 
-        public Enemy GetEntity(int index)
+        public EnemyEntity GetEntity(int index)
         {
-            return Enemy.CreateFromModel(_models.list[index]);
+            return EnemyEntity.CreateFromModel(_models.list[index]);
         }
 
         // テストデータの確認

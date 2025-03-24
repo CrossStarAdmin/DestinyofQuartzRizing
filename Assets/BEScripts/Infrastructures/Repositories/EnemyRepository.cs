@@ -17,19 +17,19 @@ namespace Assets.BEScripts.Infrastructures.Repositories
             _model = JsonConvert.DeserializeObject<EnemyModelType>(data);
         }
 
-        public async UniTask<Enemy[]> FindAll()
+        public async UniTask<EnemyEntity[]> FindAll()
         {
             if (_model == null)
                 await Initialize();
-            return Array.ConvertAll(_model.list, Enemy.CreateFromModel);
+            return Array.ConvertAll(_model.list, EnemyEntity.CreateFromModel);
         }
 
-        public async UniTask<Enemy> FindByUid(string uid)
+        public async UniTask<EnemyEntity> FindByUid(string uid)
         {
             if (_model == null)
                 await Initialize();
             EnemyListType modelParam = Array.Find(_model.list, _ => _.uid == uid);
-            return Enemy.CreateFromModel(modelParam);
+            return EnemyEntity.CreateFromModel(modelParam);
         }
     }
 }

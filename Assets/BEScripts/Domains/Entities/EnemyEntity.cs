@@ -3,7 +3,7 @@ using Assets.BEScripts.Domains.Types.Json;
 
 namespace Assets.BEScripts.Domains.Entities
 {
-    public class Enemy
+    public class EnemyEntity
     {
         private string _uid;
         private int _maxHp;
@@ -12,7 +12,7 @@ namespace Assets.BEScripts.Domains.Entities
         private int _defense;
         private int _speed;
 
-        public Enemy(
+        public EnemyEntity(
             string uid,
             int maxHp,
             int maxMp,
@@ -29,9 +29,9 @@ namespace Assets.BEScripts.Domains.Entities
             _speed = speed;
         }
 
-        public static Enemy CreateFromModel(EnemyListType _param)
+        public static EnemyEntity CreateFromModel(EnemyListType _param)
         {
-            return new Enemy(
+            return new EnemyEntity(
                 _param.uid,
                 _param.maxHp,
                 _param.maxMp,
