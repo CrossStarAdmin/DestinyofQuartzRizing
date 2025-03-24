@@ -15,7 +15,7 @@ namespace Assets.BEScripts.BETests.Units.Entities
         [Test]
         public void CreateFromModelでEntityが正常にできる()
         {
-            Enemy enemy = Enemy.CreateFromModel(_enemyTestData.GetListType(0));
+            EnemyEntity enemy = EnemyEntity.CreateFromModel(_enemyTestData.GetListType(0));
             Assert.AreEqual(_enemyTestData.GetUId(0), enemy.uid);
             Assert.AreEqual(_enemyTestData.GetMaxHp(0), enemy.maxHp);
             Assert.AreEqual(_enemyTestData.GetMaxMp(0), enemy.maxMp);

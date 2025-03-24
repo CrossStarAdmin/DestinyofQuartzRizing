@@ -16,10 +16,10 @@ namespace Assets.BEScripts.UseCases.Enemy.Services
             _enemyRepository = enemyRepository;
         }
 
-        public async UniTask<GetAllEnemyDto> Execute()
+        public async UniTask<GetAllEnemyResponseDto> Execute()
         {
             EnemyEntity[] result = await _enemyRepository.FindAll();
-            return new GetAllEnemyDto(result);
+            return new GetAllEnemyResponseDto(result);
         }
     }
 }
