@@ -1,10 +1,6 @@
-using Assets.BEScripts.Infrastructures.Configs;
-using Assets.BEScripts.Infrastructures.Repositories;
 using Assets.BEScripts.Presentations.Login.Controllers;
 using Assets.BEScripts.Presentations.TitleData.Controllers;
 using Assets.BEScripts.Presentations.UserData.Controllers;
-using Assets.BEScripts.UseCases.TitleData.Services;
-using Assets.BEScripts.UseCases.UserData.Services;
 
 namespace Assets.BEScripts
 {
