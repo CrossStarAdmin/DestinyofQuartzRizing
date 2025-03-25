@@ -1,22 +1,20 @@
-using Assets.BEScripts.UseCases.UserData.Services;
+using Assets.BEScripts.Infrastructures.Configs;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.BEScripts.Presentations.UserData.Controllers
 {
     public class BringUserDataController
     {
-        private readonly BringUserDataService _bringUserDataService;
+        private readonly UserDataConfig _userDataConfig;
 
-        public BringUserDataController(
-            BringUserDataService bringUserDataService
-        )
+        public BringUserDataController()
         {
-            _bringUserDataService = bringUserDataService;
+            _userDataConfig = new UserDataConfig();
         }
 
         public async UniTask Execute()
         {
-            await _bringUserDataService.Execute();
+            await _userDataConfig.BringAllUserData();
         }
     }
 }

@@ -1,31 +1,21 @@
-using Assets.BEScripts.Presentations.TitleData.Requests;
-using Assets.BEScripts.Presentations.TitleData.Responses;
-using Assets.BEScripts.UseCases.TitleData.Dto;
-using Assets.BEScripts.UseCases.TitleData.Services;
+using Assets.BEScripts.Infrastructures.Configs;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.BEScripts.Presentations.TitleData.Controllers
 {
     public class GetTitleDataController
     {
-        private readonly GetTitleDataService _getTitleDataService;
-        public GetTitleDataController(
-            GetTitleDataService getTitleDataService
-        )
+        private readonly TitleDataConfig _titleDataConfig;
+        public GetTitleDataController()
         {
-            _getTitleDataService = getTitleDataService;
+            _titleDataConfig = new TitleDataConfig();
         }
 
-        public async UniTask<GetTitleDataResponse> Execute(
-            GetTitleDataRequest request
+        public async UniTask<string> Execute(
+            string key
         )
         {
-            GetTitleDataRequestDto requestDto = new GetTitleDataRequestDto(request);
-            GetTitleDataResponseDto result = await _getTitleDataService.Execute(requestDto);
-            return new GetTitleDataResponse()
-            {
-                data = result.data
-            };
+            return await _titleDataConfig.GetTitleData(key);
         }
     }
 }

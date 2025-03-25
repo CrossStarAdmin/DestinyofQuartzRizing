@@ -1,31 +1,21 @@
-using Assets.BEScripts.Presentations.UserData.Requests;
-using Assets.BEScripts.Presentations.UserData.Responses;
-using Assets.BEScripts.UseCases.UserData.Dto;
-using Assets.BEScripts.UseCases.UserData.Services;
+using Assets.BEScripts.Infrastructures.Configs;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.BEScripts.Presentations.UserData.Controllers
 {
     public class GetUserDataController
     {
-        private readonly GetUserDataService _getUserDataService;
-        public GetUserDataController(
-            GetUserDataService getUserDataService
-        )
+        private readonly UserDataConfig _userDataConfig;
+        public GetUserDataController()
         {
-            _getUserDataService = getUserDataService;
+            _userDataConfig = new UserDataConfig();
         }
 
-        public async UniTask<GetUserDataResponse> Execute(
-            GetUserDataRequest request
+        public async UniTask<string> Execute(
+            string key
         )
         {
-            GetUserDataRequestDto requestDto = new GetUserDataRequestDto(request);
-            GetUserDataResponseDto result = await _getUserDataService.Execute(requestDto);
-            return new GetUserDataResponse()
-            {
-                data = result.data
-            };
+            return await _userDataConfig.GetUserData(key);
         }
     }
 }

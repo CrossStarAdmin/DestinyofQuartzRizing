@@ -13,23 +13,7 @@ namespace Assets.BEScripts
         // --------------------------------------------------
         // Service
         // --------------------------------------------------
-        // TitleData
-        private static BringTitleDataService bringTitleDataService = new BringTitleDataService(
-            new TitleDataRepository()
-        );
-        private static GetTitleDataService getTitleDataService = new GetTitleDataService(
-            new TitleDataRepository()
-        );
-        // UserData
-        private static BringUserDataService bringUserDataService = new BringUserDataService(
-            new UserDataRepository()
-        );
-        private static GetUserDataService getUserDataService = new GetUserDataService(
-            new UserDataRepository()
-        );
-        private static CreateUserDataService createUserDataService = new CreateUserDataService(
-            new UserDataRepository()
-        );
+
 
         // --------------------------------------------------
         // Controller
@@ -37,21 +21,11 @@ namespace Assets.BEScripts
         // Login
         public static LoginController loginController = new LoginController();
         // TitleData
-        public static BringTitleDataController bringTitleDataController = new BringTitleDataController(
-            bringTitleDataService
-        );
-        public static GetTitleDataController getTitleDataController = new GetTitleDataController(
-            getTitleDataService
-        );
+        public static BringTitleDataController bringTitleDataController = new BringTitleDataController();
+        public static GetTitleDataController getTitleDataController = new GetTitleDataController();
         // UserData
-        public static BringUserDataController bringUserDataController = new BringUserDataController(
-            bringUserDataService
-        );
-        public static GetUserDataController getUserDataController = new GetUserDataController(
-            getUserDataService
-        );
-        public static CreateUserDataController createUserDataController = new CreateUserDataController(
-            createUserDataService
-        );
+        public static BringUserDataController bringUserDataController = new BringUserDataController();
+        public static GetUserDataController getUserDataController = new GetUserDataController();
+        public static CreateUserDataController createUserDataController = new CreateUserDataController();
     }
 }

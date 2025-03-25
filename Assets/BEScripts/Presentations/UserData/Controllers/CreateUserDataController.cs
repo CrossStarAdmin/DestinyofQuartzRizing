@@ -1,26 +1,22 @@
-using Assets.BEScripts.Presentations.UserData.Requests;
-using Assets.BEScripts.UseCases.UserData.Dto;
-using Assets.BEScripts.UseCases.UserData.Services;
+using System.Collections.Generic;
+using Assets.BEScripts.Infrastructures.Configs;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.BEScripts.Presentations.UserData.Controllers
 {
     public class CreateUserDataController
     {
-        private readonly CreateUserDataService _createUserDataService;
-        public CreateUserDataController(
-            CreateUserDataService createUserDataService
-        )
+        private readonly UserDataConfig _userDataConfig;
+        public CreateUserDataController()
         {
-            _createUserDataService = createUserDataService;
+            _userDataConfig = new UserDataConfig();
         }
 
         public async UniTask Execute(
-            CreateUserDataRequest request
+            Dictionary<string, string> data
         )
         {
-            CreateUserDataRequestDto requestDto = new CreateUserDataRequestDto(request);
-            await _createUserDataService.Execute(requestDto);
+            await _userDataConfig.CreateUserData(data);
         }
     }
 }
