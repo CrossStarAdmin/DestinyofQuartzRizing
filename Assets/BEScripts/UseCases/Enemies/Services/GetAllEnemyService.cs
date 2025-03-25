@@ -1,9 +1,9 @@
 using Assets.BEScripts.Domains.Entities;
 using Assets.BEScripts.Infrastructures.Repositories;
-using Assets.BEScripts.UseCases.Enemy.Dto;
+using Assets.BEScripts.UseCases.Enemies.Dto;
 using Cysharp.Threading.Tasks;
 
-namespace Assets.BEScripts.UseCases.Enemy.Services
+namespace Assets.BEScripts.UseCases.Enemies.Services
 {
     public class GetAllEnemyService
     {

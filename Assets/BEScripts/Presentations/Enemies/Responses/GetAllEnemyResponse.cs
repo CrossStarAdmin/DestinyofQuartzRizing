@@ -1,6 +1,6 @@
-using Assets.BEScripts.UseCases.Enemy.Dto;
+using Assets.BEScripts.UseCases.Enemies.Dto;
 
-namespace Assets.BEScripts.Presentations.Enemy.Responses
+namespace Assets.BEScripts.Presentations.Enemies.Responses
 {
     [System.Serializable]
     public class GetAllEnemyResponseType

@@ -1,9 +1,9 @@
-using Assets.BEScripts.Presentations.Enemy.Responses;
-using Assets.BEScripts.UseCases.Enemy.Dto;
-using Assets.BEScripts.UseCases.Enemy.Services;
+using Assets.BEScripts.Presentations.Enemies.Responses;
+using Assets.BEScripts.UseCases.Enemies.Dto;
+using Assets.BEScripts.UseCases.Enemies.Services;
 using Cysharp.Threading.Tasks;
 
-namespace Assets.BEScripts.Presentations.Enemy.Controllers
+namespace Assets.BEScripts.Presentations.Enemies.Controllers
 {
     public class GetAllEnemyController
     {

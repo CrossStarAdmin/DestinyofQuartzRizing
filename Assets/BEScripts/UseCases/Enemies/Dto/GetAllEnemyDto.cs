@@ -1,6 +1,6 @@
 using Assets.BEScripts.Domains.Entities;
 
-namespace Assets.BEScripts.UseCases.Enemy.Dto
+namespace Assets.BEScripts.UseCases.Enemies.Dto
 {
     public class GetAllEnemyResponseDto
     {
