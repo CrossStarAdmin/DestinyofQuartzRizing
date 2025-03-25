@@ -1,21 +1,19 @@
-using Assets.BEScripts.UseCases.Login.Services;
+using Assets.BEScripts.Infrastructures.Configs;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.BEScripts.Presentations.Login.Controllers
 {
     public class LoginController
     {
-        private readonly LoginService _loginService;
-        public LoginController(
-            LoginService loginService
-        )
+        private readonly LoginConfig _loginConfig;
+        public LoginController()
         {
-            _loginService = loginService;
+            _loginConfig = new LoginConfig();
         }
 
         public async UniTask Execute()
         {
-            await _loginService.Execute();
+            await _loginConfig.LoginPlayFab();
         }
     }
 }

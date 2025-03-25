@@ -24,6 +24,12 @@ namespace Assets.BEScripts.Infrastructures.Models.PlayFab
             _login = new Login();
         }
 
+        // Loginから取得したい情報
+        public static string GetPlayFabId()
+        {
+            return _login.GetPlayFabId();
+        }
+
         // -----------------------------
         // TitleData
         // -----------------------------
