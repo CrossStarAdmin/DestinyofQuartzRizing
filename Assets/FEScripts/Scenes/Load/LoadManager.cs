@@ -3,6 +3,7 @@ using Assets.BEScripts;
 using Assets.FEScripts.Abstracts;
 using Assets.FEScripts.Scenes.Load;
 using Cysharp.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 namespace Assets.FEScripts.Scene.Load
 {
@@ -40,6 +41,8 @@ namespace Assets.FEScripts.Scene.Load
             // Step5: バージョンの確認・ユーザーデータの更新
             await CreateUserData(response);
             UpdateSlider();
+            // Step6: 移動
+            SceneManager.LoadScene("MenuScene");
         }
 
         protected async UniTask CreateUserData(string version)
