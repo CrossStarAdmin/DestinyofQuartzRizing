@@ -18,7 +18,7 @@ namespace Assets.BEScripts.Infrastructures.Models.PlayFab
         /// ユーザーデータの情報を全て取得する
         /// </summary>
         /// <returns></returns>
-        public async UniTask BringAllUSerDataRequest()
+        public async UniTask BringAllUserDataRequest()
         {
             await Function(
                 () =>
@@ -89,7 +89,7 @@ namespace Assets.BEScripts.Infrastructures.Models.PlayFab
 
         protected void UpdateUserDataSuccess(UpdateUserDataResult _result)
         {
-            BringAllUSerDataRequest().Forget();
+            BringAllUserDataRequest().Forget();
         }
 
         protected void UpdateUserDataFailed(PlayFabError _error)

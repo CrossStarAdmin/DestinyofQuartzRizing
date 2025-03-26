@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
 using Assets.BEScripts;
-using Assets.BEScripts.Presentations.Requests;
-using Assets.BEScripts.Presentations.Responses;
 using Assets.FEScripts.Abstracts;
 using Assets.FEScripts.Scenes.Load;
 using Cysharp.Threading.Tasks;
@@ -38,15 +35,10 @@ namespace Assets.FEScripts.Scene.Load
             await DI.bringUserDataController.Execute();
             UpdateSlider();
             // Step4: ユーザーのバージョンを取得
-            GetUserDataResponse response = await DI.getUserDataController.Execute(
-                new GetUserDataRequest()
-                {
-                    key = "version"
-                }
-            );
+            string response = await DI.getUserDataController.Execute("version");
             UpdateSlider();
             // Step5: バージョンの確認・ユーザーデータの更新
-            await CreateUserData(response.data);
+            await CreateUserData(response);
             UpdateSlider();
         }
 
@@ -56,13 +48,10 @@ namespace Assets.FEScripts.Scene.Load
             {
                 // バージョンがない場合は新規作成
                 await DI.createUserDataController.Execute(
-                    new CreateUserDataRequest()
+                    new Dictionary<string, string>()
                     {
-                        data = new Dictionary<string, string>()
-                        {
-                            { "version", "1" },
-                            { "data", "{}"}
-                        }
+                        { "version", "1" },
+                        { "data", "{}"}
                     }
                 );
             }

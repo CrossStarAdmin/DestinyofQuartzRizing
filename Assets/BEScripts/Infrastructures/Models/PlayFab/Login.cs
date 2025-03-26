@@ -25,5 +25,10 @@ namespace Assets.BEScripts.Infrastructures.Models.PlayFab
         {
             SuccessFunction();
         }
+
+        public string GetPlayFabId()
+        {
+            return PlayFabAuthService.PlayFabId;
+        }
     }
 }
