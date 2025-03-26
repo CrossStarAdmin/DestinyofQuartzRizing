@@ -6,20 +6,20 @@ using Cysharp.Threading.Tasks;
 
 namespace Assets.BEScripts.Presentations.Enemies.Controllers
 {
-    public class GetAllEnemyController
+    public class GetEnemiesController
     {
-        private readonly GetEnemiesService _getAllEnemyService;
-        public GetAllEnemyController(
-            GetEnemiesService getAllEnemyService
+        private readonly GetEnemiesService _getEnemiesService;
+        public GetEnemiesController(
+            GetEnemiesService getEnemiesService
         )
         {
-            _getAllEnemyService = getAllEnemyService;
+            _getEnemiesService = getEnemiesService;
         }
 
         public async UniTask<GetEnemiesResponseType> Execute()
         {
-            GetAllEnemyResponse response = new GetAllEnemyResponse();
-            GetEnemiesResponseDto dto = await _getAllEnemyService.Execute();
+            GetEnemiesResponse response = new GetEnemiesResponse();
+            GetEnemiesResponseDto dto = await _getEnemiesService.Execute();
             return response.ToResponse(dto);
         }
     }

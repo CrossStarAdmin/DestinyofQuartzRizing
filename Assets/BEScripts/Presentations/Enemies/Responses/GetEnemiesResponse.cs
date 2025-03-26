@@ -3,7 +3,7 @@ using Assets.BEScripts.UseCases.Enemies.Dto;
 
 namespace Assets.BEScripts.Presentations.Enemies.Responses
 {
-    public class GetAllEnemyResponse
+    public class GetEnemiesResponse
     {
         public GetEnemiesResponseType ToResponse(GetEnemiesResponseDto _dto)
         {

@@ -1,6 +1,9 @@
+using Assets.BEScripts.Infrastructures.Repositories;
 using Assets.BEScripts.Presentations.Login.Controllers;
 using Assets.BEScripts.Presentations.TitleData.Controllers;
 using Assets.BEScripts.Presentations.UserData.Controllers;
+using Assets.BEScripts.Presentations.Enemies.Controllers;
+using Assets.BEScripts.UseCases.Enemies.Services;
 
 namespace Assets.BEScripts
 {
@@ -9,7 +12,10 @@ namespace Assets.BEScripts
         // --------------------------------------------------
         // Service
         // --------------------------------------------------
-
+        // Enemies
+        public static GetEnemiesService getEnemiesService = new GetEnemiesService(
+            new EnemyRepository()
+        );
 
         // --------------------------------------------------
         // Controller
@@ -23,5 +29,9 @@ namespace Assets.BEScripts
         public static BringUserDataController bringUserDataController = new BringUserDataController();
         public static GetUserDataController getUserDataController = new GetUserDataController();
         public static CreateUserDataController createUserDataController = new CreateUserDataController();
+        // Enemies
+        public static GetEnemiesController getAllEnemyController = new GetEnemiesController(
+            getEnemiesService
+        );
     }
 }
