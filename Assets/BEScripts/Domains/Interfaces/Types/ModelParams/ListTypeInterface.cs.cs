@@ -1,5 +1,5 @@
 
-namespace Assets.BEScripts.Domains.Interfaces.Type.Json
+namespace Assets.BEScripts.Domains.Interfaces.Types.ModelParams
 {
     public interface ListTypeInterface
     {

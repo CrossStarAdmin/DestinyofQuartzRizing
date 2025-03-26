@@ -5,21 +5,21 @@ using Cysharp.Threading.Tasks;
 
 namespace Assets.BEScripts.UseCases.Enemies.Services
 {
-    public class GetAllEnemyService
+    public class GetEnemiesService
     {
         private EnemyRepository _enemyRepository;
 
-        public GetAllEnemyService(
+        public GetEnemiesService(
             EnemyRepository enemyRepository
         )
         {
             _enemyRepository = enemyRepository;
         }
 
-        public async UniTask<GetAllEnemyResponseDto> Execute()
+        public async UniTask<GetEnemiesResponseDto> Execute()
         {
             EnemyEntity[] result = await _enemyRepository.FindAll();
-            return new GetAllEnemyResponseDto(result);
+            return new GetEnemiesResponseDto(result);
         }
     }
 }

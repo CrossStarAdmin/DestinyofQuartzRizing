@@ -1,6 +1,6 @@
 using System;
 using Assets.BEScripts.Domains.Entities;
-using Assets.BEScripts.Domains.Types.Json;
+using Assets.BEScripts.Domains.Types.ModelParams;
 
 namespace Assets.BEScripts.BETests.Data.TestData
 {

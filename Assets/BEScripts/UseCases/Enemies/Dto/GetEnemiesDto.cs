@@ -2,11 +2,11 @@ using Assets.BEScripts.Domains.Entities;
 
 namespace Assets.BEScripts.UseCases.Enemies.Dto
 {
-    public class GetAllEnemyResponseDto
+    public class GetEnemiesResponseDto
     {
         private EnemyEntity[] _enemies;
 
-        public GetAllEnemyResponseDto(
+        public GetEnemiesResponseDto(
             EnemyEntity[] enemies
         )
         {

@@ -1,6 +1,6 @@
 using System;
 using Assets.BEScripts.Domains.Entities;
-using Assets.BEScripts.Domains.Types.Json;
+using Assets.BEScripts.Domains.Types.ModelParams;
 using Assets.BEScripts.Infrastructures.Models.PlayFab;
 using Cysharp.Threading.Tasks;
 using Unity.Plastic.Newtonsoft.Json;

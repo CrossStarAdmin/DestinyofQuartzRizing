@@ -1,7 +1,7 @@
 using System;
-using Assets.BEScripts.Domains.Interfaces.Type.Json;
+using Assets.BEScripts.Domains.Interfaces.Types.ModelParams;
 
-namespace Assets.BEScripts.Domains.Types.Json
+namespace Assets.BEScripts.Domains.Types.ModelParams
 {
     [Serializable]
     public class EnemyModelType : ModelTypeInterface<EnemyListType>

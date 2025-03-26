@@ -1,27 +1,11 @@
+using Assets.BEScripts.Domains.Types.Responses;
 using Assets.BEScripts.UseCases.Enemies.Dto;
 
 namespace Assets.BEScripts.Presentations.Enemies.Responses
 {
-    [System.Serializable]
-    public class GetAllEnemyResponseType
-    {
-        public EnemyDataType[] list;
-    }
-
-    [System.Serializable]
-    public class EnemyDataType
-    {
-        public string uid;
-        public int maxHp;
-        public int maxMp;
-        public int attack;
-        public int defense;
-        public int speed;
-    }
-
     public class GetAllEnemyResponse
     {
-        public GetAllEnemyResponseType ToResponse(GetAllEnemyResponseDto _dto)
+        public GetEnemiesResponseType ToResponse(GetEnemiesResponseDto _dto)
         {
             EnemyDataType[] _enemies = new EnemyDataType[_dto.enemies.Length];
             for (int i = 0; i < _dto.enemies.Length; i++)
@@ -36,7 +20,7 @@ namespace Assets.BEScripts.Presentations.Enemies.Responses
                     speed = _dto.enemies[i].speed
                 };
             }
-            return new GetAllEnemyResponseType
+            return new GetEnemiesResponseType
             {
                 list = _enemies
             };
