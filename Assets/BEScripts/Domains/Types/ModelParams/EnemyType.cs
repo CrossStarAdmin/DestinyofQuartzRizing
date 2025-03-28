@@ -13,6 +13,8 @@ namespace Assets.BEScripts.Domains.Types.ModelParams
     public class EnemyListType : ListTypeInterface
     {
         public string uid { get; set; }
+        public string name;
+        public string nameId;
         public int maxHp;
         public int maxMp;
         public int attack;

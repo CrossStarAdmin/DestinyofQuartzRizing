@@ -4,6 +4,8 @@ namespace Assets.FEScripts.Types
     public class EnemyType
     {
         public string uid;
+        public string name;
+        public string nameId;
         public int maxHp;
         public int maxMp;
         public int attack;

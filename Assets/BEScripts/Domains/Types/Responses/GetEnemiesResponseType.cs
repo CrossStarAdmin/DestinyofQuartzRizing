@@ -10,6 +10,8 @@ namespace Assets.BEScripts.Domains.Types.Responses
     public class EnemyDataType
     {
         public string uid;
+        public string name;
+        public string nameId;
         public int maxHp;
         public int maxMp;
         public int attack;

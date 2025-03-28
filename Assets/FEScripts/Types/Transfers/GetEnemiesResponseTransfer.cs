@@ -15,6 +15,8 @@ namespace Assets.FEScripts.Types.Transfer
                 enemyTypes[i] = new EnemyType
                 {
                     uid = response.list[i].uid,
+                    name = response.list[i].name,
+                    nameId = response.list[i].nameId,
                     maxHp = response.list[i].maxHp,
                     maxMp = response.list[i].maxMp,
                     attack = response.list[i].attack,

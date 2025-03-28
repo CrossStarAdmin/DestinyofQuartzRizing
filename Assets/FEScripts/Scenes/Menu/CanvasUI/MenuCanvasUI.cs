@@ -13,6 +13,7 @@ namespace Assets.FEScripts.Scenes.Menu.CanvasUI
         protected GameObject _menuContent;
         protected RectTransform _menuContentTransform;
         protected EnemyListManager[] _enemyListManagers;
+        protected int _enemyListElementHeight = 300;
         private void Awake()
         {
             Canvas canvas = GameObject.Find("MenuCanvas").GetComponent<Canvas>();
@@ -38,7 +39,7 @@ namespace Assets.FEScripts.Scenes.Menu.CanvasUI
             // EnemyTypeの個数分だけ、menuContentTransformの大きさを変更
             _menuContentTransform.sizeDelta = new Vector2(
                 _menuContentTransform.sizeDelta.x,
-                _enemyTypes.Length * 300
+                _enemyTypes.Length * _enemyListElementHeight
             );
             _enemyListManagers = new EnemyListManager[_enemyTypes.Length];
             for (int i = 0; i < _enemyTypes.Length; i++)
@@ -48,7 +49,7 @@ namespace Assets.FEScripts.Scenes.Menu.CanvasUI
                 GameObject enemyList = Instantiate(listElementPrefabs, _menuContentTransform);
                 _enemyListManagers[index] = enemyList.GetComponent<EnemyListManager>();
                 _enemyListManagers[index].InitializeElement(
-                    _enemyTypes[index].uid,
+                    _enemyTypes[index].name,
                     _enemyTypes[index].attack + " / " + _enemyTypes[index].defense
                 );
             }

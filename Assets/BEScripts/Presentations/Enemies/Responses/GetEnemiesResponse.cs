@@ -1,5 +1,7 @@
+using System.Diagnostics;
 using Assets.BEScripts.Domains.Types.Responses;
 using Assets.BEScripts.UseCases.Enemies.Dto;
+using UnityEngine;
 
 namespace Assets.BEScripts.Presentations.Enemies.Responses
 {
@@ -13,6 +15,8 @@ namespace Assets.BEScripts.Presentations.Enemies.Responses
                 _enemies[i] = new EnemyDataType
                 {
                     uid = _dto.enemies[i].uid,
+                    name = _dto.enemies[i].name,
+                    nameId = _dto.enemies[i].nameId,
                     maxHp = _dto.enemies[i].maxHp,
                     maxMp = _dto.enemies[i].maxMp,
                     attack = _dto.enemies[i].attack,
