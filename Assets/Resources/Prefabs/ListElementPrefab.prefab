@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1807892892823839080}
   - component: {fileID: 6637471753928237659}
   - component: {fileID: 2108933452960330156}
+  - component: {fileID: 5820290837953833434}
+  - component: {fileID: 5238955449833203000}
   m_Layer: 5
   m_Name: ListElementPrefab
   m_TagString: Untagged
@@ -77,6 +79,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5820290837953833434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3468060319137879610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3abcf10bc22f9b4d9059eb8f4b4749d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5238955449833203000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3468060319137879610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d65cb5a83f4c143985c3e42b64b191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5506377171293670775
 GameObject:
   m_ObjectHideFlags: 0
