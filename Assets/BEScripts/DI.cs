@@ -30,7 +30,7 @@ namespace Assets.BEScripts
         public static GetUserDataController getUserDataController = new GetUserDataController();
         public static CreateUserDataController createUserDataController = new CreateUserDataController();
         // Enemies
-        public static GetEnemiesController getAllEnemyController = new GetEnemiesController(
+        public static GetEnemiesController getEnemiesController = new GetEnemiesController(
             getEnemiesService
         );
     }

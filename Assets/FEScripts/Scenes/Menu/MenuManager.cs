@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets.BEScripts;
+using Assets.BEScripts.Presentations.Enemies.Controllers;
 using Assets.FEScripts.Abstracts;
 using Assets.FEScripts.Scenes.Menu;
 using Cysharp.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace Assets.FEScripts.Scene.Menu
         protected override async UniTask InitEntity()
         {
             await base.InitEntity();
+            entity.getEnemiesResponseType = await DI.getEnemiesController.Execute();
         }
         protected override void InitEvent()
         {
@@ -20,6 +22,7 @@ namespace Assets.FEScripts.Scene.Menu
 
         protected override async UniTask InitOriginProcess()
         {
+            await UniTask.Delay(0);
         }
     }
 }
