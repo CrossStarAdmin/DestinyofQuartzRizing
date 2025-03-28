@@ -7,5 +7,9 @@ namespace Assets.FEScripts.Abstracts
         where ComponentUI : AbstractComponentUI
     {
         protected ComponentUI _componentUI;
+        private void Awake()
+        {
+            _componentUI = GetComponent<ComponentUI>();
+        }
     }
 }

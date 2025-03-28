@@ -11,8 +11,9 @@ namespace Assets.FEScripts.Components.EnemyList
 
         protected override void InitObject()
         {
-            _titleText = GameObject.Find("TitleText").GetComponent<TextMeshProUGUI>();
-            _detailText = GameObject.Find("DetailText").GetComponent<TextMeshProUGUI>();
+            // これが指定されてるコンポーんねんとを親として取得
+            _titleText = transform.Find("TitleText").GetComponent<TextMeshProUGUI>();
+            _detailText = transform.Find("DetailText").GetComponent<TextMeshProUGUI>();
         }
 
         protected override void SetActions()

@@ -15,6 +15,13 @@ namespace Assets.FEScripts.Scene.Menu
             await base.InitEntity();
             entity.getEnemiesResponseType = await DI.getEnemiesController.Execute();
         }
+        protected override void InitUI()
+        {
+            base.InitUI();
+            ui.menuCanvasUI.SetEnemyListManager(
+                entity.enemyTypes
+            );
+        }
         protected override void InitEvent()
         {
 

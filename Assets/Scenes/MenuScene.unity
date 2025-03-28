@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 513194411}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -1196,6 +1196,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 953266020}
+  - component: {fileID: 953266023}
+  - component: {fileID: 953266022}
+  - component: {fileID: 953266021}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -1222,6 +1225,42 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &953266021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953266019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdd377d0febea1941989827717b90637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &953266022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953266019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d397ce26d573fc345b5f6e75a7fa6f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &953266023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953266019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b6c77f36a2ec9b4eb6efddd03f9a829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1070763745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,6 +2018,7 @@ GameObject:
   - component: {fileID: 1714316476}
   - component: {fileID: 1714316475}
   - component: {fileID: 1714316474}
+  - component: {fileID: 1714316478}
   m_Layer: 5
   m_Name: MenuCanvas
   m_TagString: Untagged
@@ -2069,6 +2109,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1714316478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714316472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f7284bf4254c0e438239c8935e07794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1760124333
 GameObject:
   m_ObjectHideFlags: 0
