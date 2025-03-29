@@ -32,6 +32,6 @@ namespace Assets.FEScripts.Abstracts
         /// <summary>
         /// ButtonのActionを設定する
         /// </summary>
-        protected abstract void SetButtonActions(Action[] _actions);
+        public abstract void SetButtonActions(Action[] _actions);
     }
 }

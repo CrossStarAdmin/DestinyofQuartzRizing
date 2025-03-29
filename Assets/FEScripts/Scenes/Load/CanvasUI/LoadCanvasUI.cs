@@ -28,7 +28,7 @@ namespace Assets.FEScripts.Scenes.Load.CanvasUI
             InitSlider();
         }
 
-        protected override void SetActions(Action[] _actions) { }
+        public override void SetActions(Action[] _actions) { }
 
         public void InitSlider()
         {

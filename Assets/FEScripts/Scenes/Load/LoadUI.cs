@@ -30,6 +30,6 @@ namespace Assets.FEScripts.Scenes.Load
             _loadCanvas.enabled = true;
         }
 
-        protected override void SetButtonActions(Action[] _actions) { }
+        public override void SetButtonActions(Action[] _actions) { }
     }
 }

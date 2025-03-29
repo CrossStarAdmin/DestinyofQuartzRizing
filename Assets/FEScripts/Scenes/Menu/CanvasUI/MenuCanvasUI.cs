@@ -1,6 +1,6 @@
 using System;
 using Assets.FEScripts.Abstracts;
-using Assets.FEScripts.Components.EnemyList;
+using Assets.FEScripts.Components.Elements.EnemyList;
 using Assets.FEScripts.Types;
 using TMPro;
 using UnityEngine;
@@ -30,10 +30,11 @@ namespace Assets.FEScripts.Scenes.Menu.CanvasUI
             // 初期設定
         }
 
-        protected override void SetActions(Action[] _actions) { }
+        public override void SetActions(Action[] _actions) { }
 
         public void SetEnemyListManager(
-            EnemyType[] _enemyTypes
+            EnemyType[] _enemyTypes,
+            Action[] _actions
         )
         {
             // EnemyTypeの個数分だけ、menuContentTransformの大きさを変更
@@ -52,6 +53,7 @@ namespace Assets.FEScripts.Scenes.Menu.CanvasUI
                     _enemyTypes[index].name,
                     _enemyTypes[index].attack + " / " + _enemyTypes[index].defense
                 );
+                _enemyListManagers[index].SetActions(new Action[] { _actions[index] });
             }
         }
 
