@@ -1,12 +1,9 @@
 using System;
-using System.Collections.Generic;
 using Assets.BEScripts;
-using Assets.BEScripts.Presentations.Enemies.Controllers;
 using Assets.FEScripts.Abstracts;
 using Assets.FEScripts.Scenes.Menu;
 using Assets.FEScripts.Types;
 using Cysharp.Threading.Tasks;
-using UnityEngine.SceneManagement;
 
 namespace Assets.FEScripts.Scene.Menu
 {
@@ -35,6 +32,12 @@ namespace Assets.FEScripts.Scene.Menu
         }
         protected override void InitEvent()
         {
+            ui.detailModalCanvasUI.SetActions(
+                new Action[] {
+                    () => UnityEngine.Debug.Log("No Set"),
+                    () => CloseDetailModal()
+                }
+            );
         }
 
         protected override async UniTask InitOriginProcess()
