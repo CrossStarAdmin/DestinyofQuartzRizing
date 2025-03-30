@@ -29,7 +29,5 @@ namespace Assets.FEScripts.Scenes.Load
         {
             _loadCanvas.enabled = true;
         }
-
-        public override void SetButtonActions(Action[] _actions) { }
     }
 }

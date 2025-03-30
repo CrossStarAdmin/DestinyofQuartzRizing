@@ -1,9 +1,12 @@
 using System;
+using System.Diagnostics;
 using Assets.BEScripts;
 using Assets.FEScripts.Abstracts;
 using Assets.FEScripts.Scenes.Menu;
 using Assets.FEScripts.Types;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.FEScripts.Scene.Menu
 {
@@ -30,8 +33,15 @@ namespace Assets.FEScripts.Scene.Menu
                 enemyListManagerActions
             );
         }
+
         protected override void InitEvent()
         {
+            ui.headerCanvasUI.SetActions(
+                new Action[] {
+                    () => UnityEngine.Debug.Log("Back Button"),
+                    () => UnityEngine.Debug.Log("Question Button")
+                }
+            );
             ui.detailModalCanvasUI.SetActions(
                 new Action[] {
                     () => UnityEngine.Debug.Log("No Set"),
