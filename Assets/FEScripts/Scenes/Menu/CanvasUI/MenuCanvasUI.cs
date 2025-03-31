@@ -46,7 +46,7 @@ namespace Assets.FEScripts.Scenes.Menu.CanvasUI
             for (int i = 0; i < _enemyTypes.Length; i++)
             {
                 int index = i;
-                GameObject listElementPrefabs = Resources.Load<GameObject>("Prefabs/ListElementPrefab");
+                GameObject listElementPrefabs = Resources.Load<GameObject>("Prefabs/Elements/ListElementPrefab");
                 GameObject enemyList = Instantiate(listElementPrefabs, _menuContentTransform);
                 _enemyListManagers[index] = enemyList.GetComponent<EnemyListManager>();
                 _enemyListManagers[index].InitializeElement(

@@ -20,14 +20,13 @@ namespace Assets.FEScripts.Scene.Menu
         protected override void InitUI()
         {
             base.InitUI();
-            // EnemyListManagerのActionを設定する
+            // EnemyListManagerのデータとActionを設定する
             Action[] enemyListManagerActions = new Action[entity.enemyTypes.Length];
             for (int i = 0; i < entity.enemyTypes.Length; i++)
             {
                 EnemyType enemyType = entity.enemyTypes[i];
                 enemyListManagerActions[i] = () => DisplayDetailModal(enemyType);
             }
-
             ui.menuCanvasUI.SetEnemyListManager(
                 entity.enemyTypes,
                 enemyListManagerActions
