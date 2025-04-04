@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 5564939494092915995}
   - component: {fileID: 435466572565311522}
   m_Layer: 5
-  m_Name: HeaderCanvas
+  m_Name: HeaderCanvasPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
