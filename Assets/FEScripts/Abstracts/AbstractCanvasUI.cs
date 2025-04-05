@@ -14,7 +14,7 @@ namespace Assets.FEScripts.Abstracts
             this._component = _canvas.transform.Find("Wrapper/Component").gameObject;
         }
 
-        protected abstract void SetActions(Action[] _actions);
+        public abstract void SetActions(Action[] _actions);
 
         public void DisplayCanvas(bool _isDisplay)
         {

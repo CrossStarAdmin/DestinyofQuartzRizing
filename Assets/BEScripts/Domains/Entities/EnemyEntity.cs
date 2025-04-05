@@ -6,6 +6,8 @@ namespace Assets.BEScripts.Domains.Entities
     public class EnemyEntity
     {
         private string _uid;
+        private string _name;
+        private string _nameId;
         private int _maxHp;
         private int _maxMp;
         private int _attack;
@@ -14,6 +16,8 @@ namespace Assets.BEScripts.Domains.Entities
 
         public EnemyEntity(
             string uid,
+            string name,
+            string nameId,
             int maxHp,
             int maxMp,
             int attack,
@@ -22,6 +26,8 @@ namespace Assets.BEScripts.Domains.Entities
         )
         {
             _uid = uid;
+            _name = name;
+            _nameId = nameId;
             _maxHp = maxHp;
             _maxMp = maxMp;
             _attack = attack;
@@ -33,6 +39,8 @@ namespace Assets.BEScripts.Domains.Entities
         {
             return new EnemyEntity(
                 _param.uid,
+                _param.name,
+                _param.nameId,
                 _param.maxHp,
                 _param.maxMp,
                 _param.attack,
@@ -47,6 +55,22 @@ namespace Assets.BEScripts.Domains.Entities
         public string uid
         {
             get { return _uid; }
+        }
+
+        /// <summary>
+        /// 名前
+        /// </summary>
+        public string name
+        {
+            get { return _name; }
+        }
+
+        /// <summary>
+        /// 名前ID
+        /// </summary>
+        public string nameId
+        {
+            get { return _nameId; }
         }
 
         /// <summary>

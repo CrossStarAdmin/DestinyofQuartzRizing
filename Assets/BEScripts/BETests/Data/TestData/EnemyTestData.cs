@@ -16,12 +16,16 @@ namespace Assets.BEScripts.BETests.Data.TestData
             EnemyListType enemy1 = new EnemyListType();
             EnemyListType enemy2 = new EnemyListType();
             enemy1.uid = "enemy001";
+            enemy1.name = "Enemy 1";
+            enemy1.nameId = "enemy_1";
             enemy1.maxHp = 100;
             enemy1.maxMp = 10;
             enemy1.attack = 20;
             enemy1.defense = 30;
             enemy1.speed = 10;
             enemy2.uid = "enemy002";
+            enemy2.name = "Enemy 2";
+            enemy2.nameId = "enemy_2";
             enemy2.maxHp = 200;
             enemy2.maxMp = 20;
             enemy2.attack = 40;
@@ -57,6 +61,14 @@ namespace Assets.BEScripts.BETests.Data.TestData
         public int GetCount()
         {
             return _models.list.Length;
+        }
+        public string GetName(int index)
+        {
+            return _models.list[index].name;
+        }
+        public string GetNameId(int index)
+        {
+            return _models.list[index].nameId;
         }
         public string GetUId(int index)
         {
