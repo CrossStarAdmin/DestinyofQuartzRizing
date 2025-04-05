@@ -1,20 +1,17 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Assets.BEScripts.Domains.Entities;
 using Assets.BEScripts.Domains.Types.ModelParams;
 using Assets.BEScripts.Infrastructures.Models.PlayFab;
 using Cysharp.Threading.Tasks;
 using Unity.Plastic.Newtonsoft.Json;
-using Unity.Plastic.Newtonsoft.Json.Linq;
 
 namespace Assets.BEScripts.Infrastructures.Repositories
 {
     public class PlayerRepository
     {
         private PlayerModelType _model;
-        private const string PLAYER_DATA_KEY = "PlayerData";
-        private const string PLAYER_JSON_PATH = "UserDatas/Player";
+        private const string PLAYER_DATA_KEY = "Player";
 
         public async UniTask Initialize()
         {
@@ -76,31 +73,6 @@ namespace Assets.BEScripts.Infrastructures.Repositories
 
             // 既存のプレイヤーを更新
             _model.list[index] = playerData;
-
-            // PlayFabに保存
-            string jsonData = JsonConvert.SerializeObject(_model);
-            await PlayFabModel.userData.UpdateUserDataRequest(new Dictionary<string, string>
-            {
-                { PLAYER_DATA_KEY, jsonData }
-            });
-        }
-
-        public async UniTask SaveFromJson()
-        {
-            // ResourcesからPlayer.jsonを読み込む
-            TextAsset jsonAsset = Resources.Load<TextAsset>(PLAYER_JSON_PATH);
-            if (jsonAsset == null)
-                throw new Exception($"Player JSON file not found at path: {PLAYER_JSON_PATH}");
-
-            // JSONをパース
-            JObject jsonObject = JObject.Parse(jsonAsset.text);
-            JArray items = (JArray)jsonObject["items"];
-
-            // プレイヤーリストを新規で作成する
-            PlayerListType[] newPlayers = items.ToObject<PlayerListType[]>();
-
-            // モデルを更新
-            _model.list = newPlayers;
 
             // PlayFabに保存
             string jsonData = JsonConvert.SerializeObject(_model);

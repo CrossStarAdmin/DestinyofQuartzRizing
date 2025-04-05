@@ -63,5 +63,10 @@ namespace Assets.FEScripts.Components.UI
         {
             _titleText.text = _buttonText;
         }
+
+        public void DisplayButton(bool _isDisplay)
+        {
+            gameObject.SetActive(_isDisplay);
+        }
     }
 }

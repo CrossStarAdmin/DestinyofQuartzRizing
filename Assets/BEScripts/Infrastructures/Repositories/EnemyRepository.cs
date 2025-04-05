@@ -14,7 +14,7 @@ namespace Assets.BEScripts.Infrastructures.Repositories
 
         public async UniTask Initialize()
         {
-            string data = await PlayFabModel.userData.GetUserData(ENEMY_DATA_KEY);
+            string data = await PlayFabModel.titleData.GetTitleData(ENEMY_DATA_KEY);
             // データが存在しない場合はエラー処理を吐き出す
             if (string.IsNullOrEmpty(data))
                 throw new Exception($"Enemy data not found for key: {ENEMY_DATA_KEY}");

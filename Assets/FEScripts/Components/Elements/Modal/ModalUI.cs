@@ -50,7 +50,12 @@ namespace Assets.FEScripts.Components.Elements.Modal
 
         public void DisplayVarietyButton(bool isDisplay)
         {
-            _varietyButton.gameObject.SetActive(isDisplay);
+            _varietyButton.DisplayButton(isDisplay);
+        }
+
+        public void DisplayCloseButton(bool isDisplay)
+        {
+            _closeButton.DisplayButton(isDisplay);
         }
     }
 }

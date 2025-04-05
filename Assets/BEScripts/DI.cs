@@ -6,6 +6,7 @@ using Assets.BEScripts.Presentations.Enemies.Controllers;
 using Assets.BEScripts.UseCases.Enemies.Services;
 using Assets.BEScripts.UseCases.Players.Services;
 using Assets.BEScripts.Presentations.Players.Controllers;
+using Assets.BEScripts.Presentations.Data.Controllers;
 
 namespace Assets.BEScripts
 {
@@ -17,11 +18,6 @@ namespace Assets.BEScripts
         // Enemies
         public static GetEnemiesService getEnemiesService = new GetEnemiesService(
             new EnemyRepository()
-        );
-
-        // Players
-        public static CreatePlayerFromJsonService createPlayerFromJsonService = new CreatePlayerFromJsonService(
-            new PlayerRepository()
         );
 
         // --------------------------------------------------
@@ -36,13 +32,11 @@ namespace Assets.BEScripts
         public static BringUserDataController bringUserDataController = new BringUserDataController();
         public static GetUserDataController getUserDataController = new GetUserDataController();
         public static CreateUserDataController createUserDataController = new CreateUserDataController();
+        // Data
+        public static GetInitPlayerDataController getInitPlayerDataController = new GetInitPlayerDataController();
         // Enemies
         public static GetEnemiesController getEnemiesController = new GetEnemiesController(
             getEnemiesService
-        );
-        // Players
-        public static CreatePlayerFromJsonController createPlayerFromJsonController = new CreatePlayerFromJsonController(
-            createPlayerFromJsonService
         );
     }
 }
