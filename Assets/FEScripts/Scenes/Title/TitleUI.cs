@@ -1,6 +1,5 @@
 using System;
 using Assets.FEScripts.Abstracts;
-using Assets.FEScripts.Scenes.Menu.CanvasUI;
 using Assets.FEScripts.Scenes.Title.CanvasUI;
 using UnityEngine;
 
@@ -8,7 +7,7 @@ namespace Assets.FEScripts.Scenes.Title
 {
     public class TitleUI : AbstractUI
     {
-        protected Canvas _titleHeaderCanvas, _titleCanvas, _playerSettingCanvas, _playButtonCanvas;
+        protected Canvas _titleHeaderCanvas, _titleCanvas, _playerSettingCanvas, _playButtonCanvas, _detailModalCanvas;
         protected TitleHeaderCanvasUI _titleHeaderCanvasUI;
         public TitleHeaderCanvasUI titleHeaderCanvasUI
         {
@@ -29,6 +28,11 @@ namespace Assets.FEScripts.Scenes.Title
         {
             get { return _playButtonCanvasUI; }
         }
+        protected DetailModalCanvasUI _detailModalCanvasUI;
+        public DetailModalCanvasUI detailModalCanvasUI
+        {
+            get { return _detailModalCanvasUI; }
+        }
 
         protected override void InitCanvas()
         {
@@ -39,6 +43,7 @@ namespace Assets.FEScripts.Scenes.Title
             _titleCanvas = GameObject.Find("TitleCanvas").GetComponent<Canvas>();
             _playerSettingCanvas = GameObject.Find("PlayerSettingCanvas").GetComponent<Canvas>();
             _playButtonCanvas = GameObject.Find("PlayButtonCanvas").GetComponent<Canvas>();
+            _detailModalCanvas = GameObject.Find("DetailModalCanvas").GetComponent<Canvas>();
         }
 
         protected override void InitCanvasUI()
@@ -50,6 +55,7 @@ namespace Assets.FEScripts.Scenes.Title
             _titleCanvasUI = _titleCanvas.GetComponent<TitleCanvasUI>();
             _playerSettingCanvasUI = _playerSettingCanvas.GetComponent<PlayerSettingCanvasUI>();
             _playButtonCanvasUI = _playButtonCanvas.GetComponent<PlayButtonCanvasUI>();
+            _detailModalCanvasUI = _detailModalCanvas.GetComponent<DetailModalCanvasUI>();
         }
 
         protected override void SetCanvasDisplay()
@@ -61,6 +67,7 @@ namespace Assets.FEScripts.Scenes.Title
             _titleCanvas.enabled = true;
             _playerSettingCanvas.enabled = true;
             _playButtonCanvas.enabled = true;
+            _detailModalCanvas.enabled = false;
         }
     }
 }

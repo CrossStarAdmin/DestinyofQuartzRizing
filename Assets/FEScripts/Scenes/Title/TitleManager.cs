@@ -16,18 +16,24 @@ namespace Assets.FEScripts.Scene.Title
         protected override async UniTask InitEntity()
         {
             await base.InitEntity();
+            // Entityの初期値を設定する
+            entity.getPlayersResponseType = await DI.getPlayersController.Execute();
         }
         protected override void InitUI()
         {
             base.InitUI();
             // EnemyListManagerのデータとActionを設定する
             InitPlayerCount();
+            // Playerの初期値を設定する
+            ui.detailModalCanvasUI.SetDetailModal(
+                entity.playerTypes[0]
+            );
         }
 
         protected override void InitEvent()
         {
             ui.titleHeaderCanvasUI.SetActions(new Action[] {
-                () => UnityEngine.Debug.Log("IconButton Clicked"),
+                () => ui.detailModalCanvasUI.DisplayCanvas(true),
             });
             ui.playerSettingCanvasUI.SetActions(new Action[] {
                 () => UpdatePlayerCount(false),
@@ -35,6 +41,10 @@ namespace Assets.FEScripts.Scene.Title
             });
             ui.playButtonCanvasUI.SetActions(new Action[] {
                 () => SceneManager.LoadScene("MenuScene"),
+            });
+            ui.detailModalCanvasUI.SetActions(new Action[] {
+                () => UnityEngine.Debug.Log("Not Set"),
+                () => ui.detailModalCanvasUI.DisplayCanvas(false)
             });
         }
 

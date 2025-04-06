@@ -19,6 +19,10 @@ namespace Assets.BEScripts
         public static GetEnemiesService getEnemiesService = new GetEnemiesService(
             new EnemyRepository()
         );
+        // Players
+        public static GetPlayersService getPlayersService = new GetPlayersService(
+            new PlayerRepository()
+        );
 
         // --------------------------------------------------
         // Controller
@@ -37,6 +41,10 @@ namespace Assets.BEScripts
         // Enemies
         public static GetEnemiesController getEnemiesController = new GetEnemiesController(
             getEnemiesService
+        );
+        // Players
+        public static GetPlayersController getPlayersController = new GetPlayersController(
+            getPlayersService
         );
     }
 }
