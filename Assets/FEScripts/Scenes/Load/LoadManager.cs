@@ -64,7 +64,7 @@ namespace Assets.FEScripts.Scene.Load
                     UpdateSlider();
                 }
                 // 移動
-                SceneManager.LoadScene("MenuScene");
+                SceneManager.LoadScene("TitleScene");
             }
             catch (System.Exception e)
             {
