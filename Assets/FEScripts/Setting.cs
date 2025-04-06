@@ -8,7 +8,7 @@ namespace Assets.FEScripts
         public const int MAX_PLAYER_COUNT = 10;
 
         // 全体で利用できる変数
-        public static int PlayerCount;
+        public static int playerCount;
         public static string[] playerNames;
     }
 }

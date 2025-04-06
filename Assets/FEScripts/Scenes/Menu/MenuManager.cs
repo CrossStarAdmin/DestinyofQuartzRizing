@@ -37,7 +37,7 @@ namespace Assets.FEScripts.Scene.Menu
         {
             ui.headerCanvasUI.SetActions(
                 new Action[] {
-                    () => UnityEngine.Debug.Log("Back Button"),
+                    () => SceneManager.LoadScene("TitleScene"),
                     () => UnityEngine.Debug.Log("Question Button")
                 }
             );
