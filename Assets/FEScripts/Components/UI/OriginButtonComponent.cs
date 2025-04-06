@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Assets.FEScripts.Functions;
 using DG.Tweening;
+using TMPro;
 
 namespace Assets.FEScripts.Components.UI
 {
@@ -16,7 +17,8 @@ namespace Assets.FEScripts.Components.UI
         // private int soundEffectNumber;
         // UI関係
         private Image _backgroundImage;
-        private Text _titleText;
+        private TextMeshProUGUI _titleText;
+        private Image _iconImage;
         // SEの名前関係
         // private string[] soundEffectNames = {
         //     "Button1",
@@ -30,7 +32,9 @@ namespace Assets.FEScripts.Components.UI
             // soundEffectNumber = _soundEffectNumber;
             _backgroundImage = GetComponentFunction.Execute<Image>("", gameObject);
             if (FindComponentFunction.Execute("Text", gameObject))
-                _titleText = GetComponentFunction.Execute<Text>("Text", gameObject);
+                _titleText = GetComponentFunction.Execute<TextMeshProUGUI>("Text", gameObject);
+            if (FindComponentFunction.Execute("Image", gameObject))
+                _iconImage = GetComponentFunction.Execute<Image>("Image", gameObject);
         }
 
         // 処理関係
