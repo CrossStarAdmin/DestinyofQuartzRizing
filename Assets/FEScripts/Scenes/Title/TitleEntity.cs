@@ -20,16 +20,13 @@ namespace Assets.FEScripts.Scenes.Title
             }
         }
 
-        public const int MIN_PLAYER_COUNT = 3;
-        public const int MAX_PLAYER_COUNT = 10;
-
         private int _playerCount;
         public int playerCount
         {
             get => _playerCount;
             set
             {
-                if (value < MIN_PLAYER_COUNT || value > MAX_PLAYER_COUNT)
+                if (value < Setting.MIN_PLAYER_COUNT || value > Setting.MAX_PLAYER_COUNT)
                 {
                     throw new System.ArgumentOutOfRangeException("PlayerCount must be between 0 and 4.");
                 }
@@ -37,13 +34,13 @@ namespace Assets.FEScripts.Scenes.Title
             }
         }
 
-        private string[] _playerName;
-        public string[] playerName
+        private string[] _playerNames;
+        public string[] playerNames
         {
-            get => _playerName;
+            get => _playerNames;
             set
             {
-                _playerName = value;
+                _playerNames = value;
             }
         }
     }

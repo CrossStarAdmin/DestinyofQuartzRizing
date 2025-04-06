@@ -59,11 +59,11 @@ namespace Assets.FEScripts.Scenes.Title.CanvasUI
             // プレイヤー数の更新
             _playerCountText.text = _playerCount.ToString();
             // ボタンの表示を確認
-            if (_playerCount <= 3)
+            if (_playerCount <= Setting.MIN_PLAYER_COUNT)
                 _reduceButton.gameObject.SetActive(false);
             else
                 _reduceButton.gameObject.SetActive(true);
-            if (_playerCount >= 10)
+            if (_playerCount >= Setting.MAX_PLAYER_COUNT)
                 _addButton.gameObject.SetActive(false);
             else
                 _addButton.gameObject.SetActive(true);

@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Assets.BEScripts;
 using Assets.FEScripts.Abstracts;
@@ -40,7 +41,7 @@ namespace Assets.FEScripts.Scene.Title
                 () => UpdatePlayerCount(true),
             });
             ui.playButtonCanvasUI.SetActions(new Action[] {
-                () => SceneManager.LoadScene("MenuScene"),
+                () => StartGame(),
             });
             ui.detailModalCanvasUI.SetActions(new Action[] {
                 () => UnityEngine.Debug.Log("Not Set"),
@@ -55,49 +56,66 @@ namespace Assets.FEScripts.Scene.Title
 
         protected void InitPlayerCount()
         {
-            string[] playerName = new string[3];
-            for (int i = 0; i < 3; i++)
+            entity.playerNames = new string[Setting.INIT_PLAYER_COUNT];
+            for (int i = 0; i < Setting.INIT_PLAYER_COUNT; i++)
             {
-                playerName[i] = "Player" + (i + 1).ToString();
+                entity.playerNames[i] = "Player" + (i + 1).ToString();
             }
             // プレイヤーの数を初期化する
-            entity.playerCount = 3;
+            entity.playerCount = Setting.INIT_PLAYER_COUNT;
             // PlayerSettingCanvasを更新する
             ui.playerSettingCanvasUI.UpdatePlayerSetting(
                 entity.playerCount,
-                playerName
+                entity.playerNames
             );
         }
 
         protected void UpdatePlayerCount(bool _isAdd)
         {
             // 現在のプレイヤーの名前を一旦取得する
-            string[] playerNames = new string[entity.playerCount];
+            entity.playerNames = new string[entity.playerCount];
             for (int i = 0; i < entity.playerCount; i++)
             {
-                playerNames[i] = ui.playerSettingCanvasUI.GetPlayerName(i);
+                entity.playerNames[i] = ui.playerSettingCanvasUI.GetPlayerName(i);
             }
             // プレイヤーの数を更新する
             if (_isAdd)
             {
                 // プレイヤーの数を増やす
                 entity.playerCount++;
-                // playerNamesに新しく１つデータを追加する
-                Array.Resize(ref playerNames, entity.playerCount);
-                playerNames[entity.playerCount - 1] = "Player" + entity.playerCount.ToString();
+                // entityのPlayerNamesをリサイズ
+                // Array.Resize(ref entity.playerNames, entity.playerCount);
+                entity.playerNames = entity.playerNames.Append("Player" + entity.playerCount.ToString()).ToArray();
             }
             else
             {
                 // プレイヤーの数を減らす
                 entity.playerCount--;
                 // playerNamesから最後のデータを削除する
-                Array.Resize(ref playerNames, entity.playerCount);
+                entity.playerNames = entity.playerNames.Take(entity.playerCount).ToArray();
             }
             // SettingCanvasを更新
             ui.playerSettingCanvasUI.UpdatePlayerSetting(
                 entity.playerCount,
-                playerNames
+                entity.playerNames
             );
+        }
+
+        protected void StartGame()
+        {
+            // プレイヤーの名前を取得する
+            string[] playerNames = new string[entity.playerCount];
+            for (int i = 0; i < entity.playerCount; i++)
+            {
+                playerNames[i] = ui.playerSettingCanvasUI.GetPlayerName(i);
+            }
+            // プレイヤーの名前を設定する
+            entity.playerNames = playerNames;
+            // プレイヤーの数を設定する
+            Setting.PlayerCount = entity.playerCount;
+            Setting.playerNames = playerNames;
+            // ページ遷移
+            SceneManager.LoadScene("MenuScene");
         }
     }
 }
