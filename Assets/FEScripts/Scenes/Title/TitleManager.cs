@@ -23,8 +23,6 @@ namespace Assets.FEScripts.Scene.Title
         protected override void InitUI()
         {
             base.InitUI();
-            // EnemyListManagerのデータとActionを設定する
-            InitPlayerCount();
             // Playerの初期値を設定する
             ui.detailModalCanvasUI.SetDetailModal(
                 entity.playerTypes[0]
@@ -51,6 +49,9 @@ namespace Assets.FEScripts.Scene.Title
 
         protected override async UniTask InitOriginProcess()
         {
+            // PlayerCountの初期値を設定する
+            InitPlayerCount();
+            // await処理
             await Task.Delay(0);
         }
 
