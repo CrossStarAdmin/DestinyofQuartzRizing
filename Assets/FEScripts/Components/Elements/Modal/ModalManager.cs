@@ -1,5 +1,7 @@
 using System;
+using System.Diagnostics;
 using Assets.FEScripts.Abstracts;
+using UnityEngine;
 
 namespace Assets.FEScripts.Components.Elements.Modal
 {
@@ -24,6 +26,13 @@ namespace Assets.FEScripts.Components.Elements.Modal
             {
                 _componentUI.SetVarietyButtonText(_varietyButtonText);
             }
+        }
+
+        public void InitializeCloseButton(
+            bool _isDisplay
+        )
+        {
+            _componentUI.DisplayCloseButton(_isDisplay);
         }
 
         public void SetActions(Action[] _actions)

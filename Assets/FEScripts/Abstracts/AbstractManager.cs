@@ -6,7 +6,7 @@ namespace Assets.FEScripts.Abstracts
     public abstract class AbstractManager<OriginEntity, OriginUI>
         : MonoBehaviour
         where OriginEntity : MonoBehaviour
-        where OriginUI : MonoBehaviour
+        where OriginUI : AbstractUI
     {
         protected OriginEntity entity;
         protected OriginUI ui;
@@ -21,6 +21,8 @@ namespace Assets.FEScripts.Abstracts
             InitUI();
             InitEvent();
             await InitOriginProcess();
+            if (ui.fadeCanvasUI != null)
+                await ui.fadeCanvasUI.FadeIn();
         }
 
         /// <summary>

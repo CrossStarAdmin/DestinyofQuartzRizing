@@ -6,11 +6,16 @@ namespace Assets.FEScripts.Abstracts
 {
     public abstract class AbstractUI : MonoBehaviour
     {
-        protected Canvas _headerCanvas;
+        protected Canvas _headerCanvas, _fadeCanvas;
         protected HeaderCanvasUI _headerCanvasUI;
         public HeaderCanvasUI headerCanvasUI
         {
             get { return _headerCanvasUI; }
+        }
+        protected FadeCanvasUI _fadeCanvasUI;
+        public FadeCanvasUI fadeCanvasUI
+        {
+            get { return _fadeCanvasUI; }
         }
 
         public void Awake()
@@ -27,6 +32,8 @@ namespace Assets.FEScripts.Abstracts
         {
             if (GameObject.Find("HeaderCanvas") != null)
                 _headerCanvas = GameObject.Find("HeaderCanvas").GetComponent<Canvas>();
+            if (GameObject.Find("FadeCanvas") != null)
+                _fadeCanvas = GameObject.Find("FadeCanvas").GetComponent<Canvas>();
         }
 
         /// <summary>
@@ -37,6 +44,8 @@ namespace Assets.FEScripts.Abstracts
         {
             if (_headerCanvas != null)
                 _headerCanvasUI = _headerCanvas.GetComponent<HeaderCanvasUI>();
+            if (_fadeCanvas != null)
+                _fadeCanvasUI = _fadeCanvas.GetComponent<FadeCanvasUI>();
         }
 
         /// <summary>
@@ -47,6 +56,8 @@ namespace Assets.FEScripts.Abstracts
         {
             if (_headerCanvas != null)
                 _headerCanvas.enabled = true;
+            if (_fadeCanvas != null)
+                _fadeCanvas.enabled = true;
         }
     }
 }

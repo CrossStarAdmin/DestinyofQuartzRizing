@@ -10,10 +10,20 @@ namespace Assets.FEScripts.Scenes.Load
         // private UniTask[] _loadUniTasks;
         protected int _maxStep;
         protected int _step = 0;
+        protected string _version;
+        public int step
+        {
+            get { return _step; }
+        }
         public int maxStep
         {
             get { return _maxStep; }
             set { _maxStep = value; }
+        }
+        public string version
+        {
+            get { return _version; }
+            set { _version = value; }
         }
 
         public void AddStep()

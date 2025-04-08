@@ -1,0 +1,14 @@
+{
+  "list": [
+    {
+      "uid": "user01_0001",
+      "name": "Player1",
+      "nameId": "player01_0001",
+      "maxHP": 1000,
+      "maxMP": 10,
+      "attack": 100,
+      "defense": 50,
+      "speed": 1000
+    }
+  ]
+}
