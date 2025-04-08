@@ -27,11 +27,17 @@ namespace Assets.FEScripts.Components.CanvasUI
 
         public async UniTask FadeIn()
         {
+            // ページを開いたときの最初の処理
             await Task.Delay(1000); // 1秒待機
+            // FadeCanvasを非表示にする
+            DisplayCanvas(false);
         }
 
         public async UniTask FadeOut()
         {
+            // FadeCanvasを表示する
+            DisplayCanvas(true);
+            // ページを閉じるときの処理
             await Task.Delay(1000); // 1秒待機
         }
     }

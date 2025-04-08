@@ -22,12 +22,15 @@ namespace Assets.FEScripts.Scenes.Load
 
         protected override void InitCanvas()
         {
+            base.InitCanvas();
+            // 各Canvasを取得
             _loadCanvas = GameObject.Find("LoadCanvas").GetComponent<Canvas>();
             _errorModalCanvas = GameObject.Find("ErrorModalCanvas").GetComponent<Canvas>();
         }
 
         protected override void InitCanvasUI()
         {
+            base.InitCanvasUI();
             // CanvasUIの設定
             _loadCanvasUI = _loadCanvas.GetComponent<LoadCanvasUI>();
             _errorModalCanvasUI = _errorModalCanvas.GetComponent<ErrorModalCanvasUI>();
@@ -35,6 +38,8 @@ namespace Assets.FEScripts.Scenes.Load
 
         protected override void SetCanvasDisplay()
         {
+            base.SetCanvasDisplay();
+            // BaseのSetCanvasDisplayを呼び出す
             _loadCanvas.enabled = true;
             _errorModalCanvas.enabled = false;
         }

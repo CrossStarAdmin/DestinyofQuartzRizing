@@ -64,6 +64,9 @@ namespace Assets.FEScripts.Scene.Load
                     UpdateSlider();
                 }
                 // 移動
+                Debug.Log(ui.fadeCanvasUI);
+                await ui.fadeCanvasUI.FadeOut();
+                // シーンの遷移
                 SceneManager.LoadScene("TitleScene");
             }
             catch (System.Exception e)
