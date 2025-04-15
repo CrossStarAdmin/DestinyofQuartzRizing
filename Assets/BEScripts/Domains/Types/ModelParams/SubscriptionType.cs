@@ -16,8 +16,6 @@ namespace Assets.BEScripts.Domains.Types.ModelParams
         public string itemId;
         public string name;
         public string description;
-        public uint jemCount;
-        public uint campaignJemCount;
         public uint price;
         public uint campaignPrice;
     }

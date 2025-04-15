@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.BEScripts.Infrastructures.Models.PlayFab;
+using Assets.BackendScripts.Infrastructure.PlayFab.Contents;
 
 namespace Assets.BEScripts.Infrastructures.Models.PlayFab
 {
@@ -55,6 +56,20 @@ namespace Assets.BEScripts.Infrastructures.Models.PlayFab
         public static void InitializeUserData()
         {
             _userData = new UserData();
+        }
+
+        // -----------------------------
+        // CatalogList
+        // -----------------------------
+        // CatalogListクラスを取得するためのプロパティ
+        private static CatalogList _catalogList;
+        public static CatalogList catalogList
+        {
+            get { return _catalogList; }
+        }
+        public static void InitializeCatalogList()
+        {
+            _catalogList = new CatalogList();
         }
     }
 }

@@ -7,6 +7,7 @@ using Assets.BEScripts.UseCases.Enemies.Services;
 using Assets.BEScripts.UseCases.Players.Services;
 using Assets.BEScripts.Presentations.Players.Controllers;
 using Assets.BEScripts.Presentations.Data.Controllers;
+using Assets.BEScripts.Presentations.CatalogList;
 
 namespace Assets.BEScripts
 {
@@ -36,6 +37,8 @@ namespace Assets.BEScripts
         public static BringUserDataController bringUserDataController = new BringUserDataController();
         public static GetUserDataController getUserDataController = new GetUserDataController();
         public static CreateUserDataController createUserDataController = new CreateUserDataController();
+        // CatalogList
+        public static BringCatalogListController bringCatalogListController = new BringCatalogListController();
         // Data
         public static GetInitPlayerDataController getInitPlayerDataController = new GetInitPlayerDataController();
         // Enemies
