@@ -7,7 +7,8 @@ namespace Assets.FEScripts.Scenes.Title.CanvasUI
 {
     public class TitleHeaderCanvasUI : AbstractCanvasUI
     {
-        private OriginButtonComponent _iconButton;
+        private OriginButtonComponent _purchaseButton;
+        private OriginButtonComponent _playerInfoButton;
 
         private void Awake()
         {
@@ -19,13 +20,16 @@ namespace Assets.FEScripts.Scenes.Title.CanvasUI
         {
             base.InitObject(_canvas);
             // 各コンポーネントを取得
-            _iconButton = _component.transform.Find("IconButton").GetComponent<OriginButtonComponent>();
+
+            _purchaseButton = _component.transform.Find("PurchaseButton").GetComponent<OriginButtonComponent>();
+            _playerInfoButton = _component.transform.Find("PlayerInfoButton").GetComponent<OriginButtonComponent>();
         }
 
         public override void SetActions(Action[] _actions)
         {
             // IconButtonのアクションをセット
-            _iconButton.InitOriginButtonComponent(_actions[0]);
+            _purchaseButton.InitOriginButtonComponent(_actions[0]);
+            _playerInfoButton.InitOriginButtonComponent(_actions[0]);
         }
     }
 }

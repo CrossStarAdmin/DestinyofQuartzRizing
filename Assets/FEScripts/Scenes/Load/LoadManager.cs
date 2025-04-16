@@ -14,7 +14,7 @@ namespace Assets.FEScripts.Scene.Load
         protected override async UniTask InitEntity()
         {
             await base.InitEntity();
-            entity.maxStep = 5;
+            entity.maxStep = 6;
         }
 
         protected override void InitUI()
@@ -61,6 +61,9 @@ namespace Assets.FEScripts.Scene.Load
                     // Step5: ユーザーデータの更新
                     else if (entity.step == 4)
                         await CreateUserData(entity.version);
+                    // Step6: 購入情報の取得
+                    else if (entity.step == 5)
+                        await DI.bringCatalogListController.Execute();
                     UpdateSlider();
                 }
                 // 移動

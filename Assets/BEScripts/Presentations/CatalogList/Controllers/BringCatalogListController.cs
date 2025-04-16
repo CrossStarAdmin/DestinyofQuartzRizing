@@ -11,7 +11,7 @@ namespace Assets.BEScripts.Presentations.CatalogList
             _catalogListConfig = new CatalogListConfig();
         }
 
-        public async UniTask BringAllCatalogItems()
+        public async UniTask Execute()
         {
             await _catalogListConfig.BringAllCatalogItems();
         }

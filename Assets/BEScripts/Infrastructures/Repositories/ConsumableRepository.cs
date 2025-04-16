@@ -5,6 +5,7 @@ using Assets.BEScripts.Domains.Types.ModelParams;
 using Assets.BEScripts.Infrastructures.Models.PlayFab;
 using Cysharp.Threading.Tasks;
 using PlayFab.ClientModels;
+using UnityEngine;
 
 namespace Assets.BEScripts.Infrastructures.Repositories
 {
@@ -19,7 +20,7 @@ namespace Assets.BEScripts.Infrastructures.Repositories
             // ストアの取得
             await PlayFabModel.catalogList.GetStoreItemsRequest(CONSUMABLE_STORE_KEY);
             // StoreとCatalogのデータを取得
-            List<CatalogItem> catalogItems = PlayFabModel.catalogList.catalogItems.FindAll(catalogItem => catalogItem.ItemId == CONSUMABLE_CATALOG_KEY);
+            List<CatalogItem> catalogItems = PlayFabModel.catalogList.catalogItems.FindAll(catalogItem => catalogItem.ItemClass == CONSUMABLE_CATALOG_KEY);
             List<StoreItem> storeItems = PlayFabModel.catalogList.storeItems;
             // Modelを作成する
             _model = new ConsumableModelType

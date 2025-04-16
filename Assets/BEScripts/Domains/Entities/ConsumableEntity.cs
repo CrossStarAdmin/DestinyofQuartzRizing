@@ -6,6 +6,7 @@ namespace Assets.BEScripts.Domains.Entities
     {
         private string _uid;
         private string _itemId;
+        private string _itemClass;
         private string _name;
         private string _description;
         private uint _jemCount;
