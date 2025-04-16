@@ -8,6 +8,12 @@ using Assets.BEScripts.UseCases.Players.Services;
 using Assets.BEScripts.Presentations.Players.Controllers;
 using Assets.BEScripts.Presentations.Data.Controllers;
 using Assets.BEScripts.Presentations.CatalogList;
+using Assets.BEScripts.UseCases.Consumables.Services;
+using Assets.BEScripts.UseCases.NoConsumables.Services;
+using Assets.BEScripts.UseCases.Subscriptions.Services;
+using Assets.BEScripts.Presentations.Consumables.Controllers;
+using Assets.BEScripts.Presentations.NoConsumables.Controllers;
+using Assets.BEScripts.Presentations.Subscriptions.Controllers;
 
 namespace Assets.BEScripts
 {
@@ -23,6 +29,18 @@ namespace Assets.BEScripts
         // Players
         public static GetPlayersService getPlayersService = new GetPlayersService(
             new PlayerRepository()
+        );
+        // Consumables
+        public static GetConsumablesService getConsumablesService = new GetConsumablesService(
+            new ConsumableRepository()
+        );
+        // NoConsumables
+        public static GetNoConsumablesService getNoConsumableService = new GetNoConsumablesService(
+            new NoConsumableRepository()
+        );
+        // Subscriptions
+        public static GetSubscriptionsService getSubscriptionsService = new GetSubscriptionsService(
+            new SubscriptionRepository()
         );
 
         // --------------------------------------------------
@@ -48,6 +66,18 @@ namespace Assets.BEScripts
         // Players
         public static GetPlayersController getPlayersController = new GetPlayersController(
             getPlayersService
+        );
+        // Consumables
+        public static GetConsumablesController getConsumablesController = new GetConsumablesController(
+            getConsumablesService
+        );
+        // NoConsumables
+        public static GetNoConsumablesController getNoConsumablesController = new GetNoConsumablesController(
+            getNoConsumableService
+        );
+        // Subscriptions
+        public static GetSubscriptionsController getSubscriptionsController = new GetSubscriptionsController(
+            getSubscriptionsService
         );
     }
 }
