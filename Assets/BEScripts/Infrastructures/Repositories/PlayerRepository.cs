@@ -11,11 +11,10 @@ namespace Assets.BEScripts.Infrastructures.Repositories
     public class PlayerRepository
     {
         private PlayerModelType _model;
-        private const string PLAYER_DATA_KEY = "Player";
 
         public async UniTask Initialize()
         {
-            string data = await PlayFabModel.userData.GetUserData(PLAYER_DATA_KEY);
+            string data = await PlayFabModel.userData.GetUserData(Setting.PLAYER_DATA_KEY);
             if (string.IsNullOrEmpty(data))
             {
                 // データが存在しない場合は新規作成
@@ -78,7 +77,7 @@ namespace Assets.BEScripts.Infrastructures.Repositories
             string jsonData = JsonConvert.SerializeObject(_model);
             await PlayFabModel.userData.UpdateUserDataRequest(new Dictionary<string, string>
             {
-                { PLAYER_DATA_KEY, jsonData }
+                { Setting.PLAYER_DATA_KEY, jsonData }
             });
         }
     }

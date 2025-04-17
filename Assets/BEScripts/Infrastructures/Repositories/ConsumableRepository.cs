@@ -12,15 +12,13 @@ namespace Assets.BEScripts.Infrastructures.Repositories
     public class ConsumableRepository
     {
         private ConsumableModelType _model;
-        private const string CONSUMABLE_CATALOG_KEY = "Consumable";
-        private const string CONSUMABLE_STORE_KEY = "Consumable";
 
         public async UniTask Initialize()
         {
             // ストアの取得
-            await PlayFabModel.catalogList.GetStoreItemsRequest(CONSUMABLE_STORE_KEY);
+            await PlayFabModel.catalogList.GetStoreItemsRequest(Setting.CONSUMABLE_STORE_KEY);
             // StoreとCatalogのデータを取得
-            List<CatalogItem> catalogItems = PlayFabModel.catalogList.catalogItems.FindAll(catalogItem => catalogItem.ItemClass == CONSUMABLE_CATALOG_KEY);
+            List<CatalogItem> catalogItems = PlayFabModel.catalogList.catalogItems.FindAll(catalogItem => catalogItem.ItemClass == Setting.CONSUMABLE_CATALOG_KEY);
             List<StoreItem> storeItems = PlayFabModel.catalogList.storeItems;
             // Modelを作成する
             _model = new ConsumableModelType

@@ -11,15 +11,13 @@ namespace Assets.BEScripts.Infrastructures.Repositories
     public class SubscriptionRepository
     {
         private SubscriptionModelType _model;
-        private const string SUBSCRIPTION_CATALOG_KEY = "Subscription";
-        private const string SUBSCRIPTION_STORE_KEY = "Subscription";
 
         public async UniTask Initialize()
         {
             // ストアの取得
-            await PlayFabModel.catalogList.GetStoreItemsRequest(SUBSCRIPTION_STORE_KEY);
+            await PlayFabModel.catalogList.GetStoreItemsRequest(Setting.SUBSCRIPTION_STORE_KEY);
             // StoreとCatalogのデータを取得
-            List<CatalogItem> catalogItems = PlayFabModel.catalogList.catalogItems.FindAll(catalogItem => catalogItem.ItemId == SUBSCRIPTION_CATALOG_KEY);
+            List<CatalogItem> catalogItems = PlayFabModel.catalogList.catalogItems.FindAll(catalogItem => catalogItem.ItemId == Setting.SUBSCRIPTION_CATALOG_KEY);
             List<StoreItem> storeItems = PlayFabModel.catalogList.storeItems;
             // Modelを作成する
             _model = new SubscriptionModelType

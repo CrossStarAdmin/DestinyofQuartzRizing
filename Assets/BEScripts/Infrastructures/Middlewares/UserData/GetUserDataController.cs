@@ -1,7 +1,7 @@
 using Assets.BEScripts.Infrastructures.Configs;
 using Cysharp.Threading.Tasks;
 
-namespace Assets.BEScripts.Presentations.UserData.Controllers
+namespace Assets.BEScripts.Infrastructures.Middlewares.UserData
 {
     public class GetUserDataController
     {

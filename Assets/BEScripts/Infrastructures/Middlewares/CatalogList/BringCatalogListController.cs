@@ -1,7 +1,7 @@
 using Assets.BEScripts.Infrastructures.Configs;
 using Cysharp.Threading.Tasks;
 
-namespace Assets.BEScripts.Presentations.CatalogList
+namespace Assets.BEScripts.Infrastructures.Middlewares.CatalogList
 {
     public class BringCatalogListController
     {

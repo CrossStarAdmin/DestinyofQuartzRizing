@@ -11,15 +11,13 @@ namespace Assets.BEScripts.Infrastructures.Repositories
     public class NoConsumableRepository
     {
         private NoConsumableModelType _model;
-        private const string NO_CONSUMABLE_CATALOG_KEY = "NoConsumable";
-        private const string NO_CONSUMABLE_STORE_KEY = "NoConsumable";
 
         public async UniTask Initialize()
         {
             // ストアの取得
-            await PlayFabModel.catalogList.GetStoreItemsRequest(NO_CONSUMABLE_STORE_KEY);
+            await PlayFabModel.catalogList.GetStoreItemsRequest(Setting.NO_CONSUMABLE_STORE_KEY);
             // StoreとCatalogのデータを取得
-            List<CatalogItem> catalogItems = PlayFabModel.catalogList.catalogItems.FindAll(catalogItem => catalogItem.ItemId == NO_CONSUMABLE_CATALOG_KEY);
+            List<CatalogItem> catalogItems = PlayFabModel.catalogList.catalogItems.FindAll(catalogItem => catalogItem.ItemId == Setting.NO_CONSUMABLE_CATALOG_KEY);
             List<StoreItem> storeItems = PlayFabModel.catalogList.storeItems;
             // Modelを作成する
             _model = new NoConsumableModelType

@@ -1,19 +1,19 @@
 using Assets.BEScripts.Infrastructures.Repositories;
-using Assets.BEScripts.Presentations.Login.Controllers;
-using Assets.BEScripts.Presentations.TitleData.Controllers;
-using Assets.BEScripts.Presentations.UserData.Controllers;
 using Assets.BEScripts.Presentations.Enemies.Controllers;
 using Assets.BEScripts.UseCases.Enemies.Services;
 using Assets.BEScripts.UseCases.Players.Services;
 using Assets.BEScripts.Presentations.Players.Controllers;
-using Assets.BEScripts.Presentations.Data.Controllers;
-using Assets.BEScripts.Presentations.CatalogList;
 using Assets.BEScripts.UseCases.Consumables.Services;
 using Assets.BEScripts.UseCases.NoConsumables.Services;
 using Assets.BEScripts.UseCases.Subscriptions.Services;
 using Assets.BEScripts.Presentations.Consumables.Controllers;
 using Assets.BEScripts.Presentations.NoConsumables.Controllers;
 using Assets.BEScripts.Presentations.Subscriptions.Controllers;
+using Assets.BEScripts.Infrastructures.Middlewares.Data;
+using Assets.BEScripts.Infrastructures.Middlewares.Login;
+using Assets.BEScripts.Infrastructures.Middlewares.TitleData;
+using Assets.BEScripts.Infrastructures.Middlewares.UserData;
+using Assets.BEScripts.Infrastructures.Middlewares.CatalogList;
 
 namespace Assets.BEScripts
 {
@@ -46,19 +46,6 @@ namespace Assets.BEScripts
         // --------------------------------------------------
         // Controller
         // --------------------------------------------------
-        // Login
-        public static LoginController loginController = new LoginController();
-        // TitleData
-        public static BringTitleDataController bringTitleDataController = new BringTitleDataController();
-        public static GetTitleDataController getTitleDataController = new GetTitleDataController();
-        // UserData
-        public static BringUserDataController bringUserDataController = new BringUserDataController();
-        public static GetUserDataController getUserDataController = new GetUserDataController();
-        public static CreateUserDataController createUserDataController = new CreateUserDataController();
-        // CatalogList
-        public static BringCatalogListController bringCatalogListController = new BringCatalogListController();
-        // Data
-        public static GetInitPlayerDataController getInitPlayerDataController = new GetInitPlayerDataController();
         // Enemies
         public static GetEnemiesController getEnemiesController = new GetEnemiesController(
             getEnemiesService
@@ -79,5 +66,23 @@ namespace Assets.BEScripts
         public static GetSubscriptionsController getSubscriptionsController = new GetSubscriptionsController(
             getSubscriptionsService
         );
+
+        // --------------------------------------------------
+        // Config
+        // --------------------------------------------------
+        // Login
+        public static LoginController loginController = new LoginController();
+        // TitleData
+        public static BringTitleDataController bringTitleDataController = new BringTitleDataController();
+        public static GetTitleDataController getTitleDataController = new GetTitleDataController();
+        // UserData
+        public static BringUserDataController bringUserDataController = new BringUserDataController();
+        public static GetUserDataController getUserDataController = new GetUserDataController();
+        public static CreateUserDataController createUserDataController = new CreateUserDataController();
+        // CatalogList
+        public static BringCatalogListController bringCatalogListController = new BringCatalogListController();
+        // Data
+        public static GetInitPlayerDataController getInitPlayerDataController = new GetInitPlayerDataController();
+
     }
 }

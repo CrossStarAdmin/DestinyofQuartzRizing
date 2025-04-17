@@ -1,6 +1,6 @@
 using Assets.BEScripts.Infrastructures.Configs;
 
-namespace Assets.BEScripts.Presentations.Data.Controllers
+namespace Assets.BEScripts.Infrastructures.Middlewares.Data
 {
     public class GetInitPlayerDataController
     {
