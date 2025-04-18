@@ -66,11 +66,6 @@ namespace Assets.FEScripts.Scene.Load
                         await DI.bringCatalogListController.Execute();
                     UpdateSlider();
                 }
-                // 移動
-                Debug.Log(ui.fadeCanvasUI);
-                await ui.fadeCanvasUI.FadeOut();
-                // シーンの遷移
-                SceneManager.LoadScene("TitleScene");
             }
             catch (System.Exception e)
             {
@@ -99,6 +94,18 @@ namespace Assets.FEScripts.Scene.Load
             ui.loadCanvasUI.UpdateSlider(
                 entity.percent
             );
+        }
+
+        protected override async UniTask FadeFunction()
+        {
+            if (ui.fadeCanvasUI != null)
+            {
+                await ui.fadeCanvasUI.FadeOut();
+                SceneManager.LoadScene("TitleScene");
+                return;
+            }
+            SceneManager.LoadScene("TitleScene");
+            return;
         }
     }
 }
