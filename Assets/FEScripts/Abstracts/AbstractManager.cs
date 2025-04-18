@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.FEScripts.Abstracts
 {
@@ -21,8 +22,7 @@ namespace Assets.FEScripts.Abstracts
             InitUI();
             InitEvent();
             await InitOriginProcess();
-            if (ui.fadeCanvasUI != null)
-                await ui.fadeCanvasUI.FadeIn();
+            await FadeFunction();
         }
 
         /// <summary>
@@ -60,5 +60,14 @@ namespace Assets.FEScripts.Abstracts
         /// </summary>
         /// <returns></returns>
         protected abstract UniTask InitOriginProcess();
+
+        /// <summary>
+        /// ページ遷移を行う
+        /// </summary>
+        protected virtual async UniTask FadeFunction()
+        {
+            if (ui.fadeCanvasUI != null)
+                await ui.fadeCanvasUI.FadeIn();
+        }
     }
 }

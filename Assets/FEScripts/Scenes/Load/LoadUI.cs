@@ -40,6 +40,7 @@ namespace Assets.FEScripts.Scenes.Load
         {
             base.SetCanvasDisplay();
             // BaseのSetCanvasDisplayを呼び出す
+            _fadeCanvas.enabled = false;
             _loadCanvas.enabled = true;
             _errorModalCanvas.enabled = false;
         }

@@ -10,14 +10,13 @@ namespace Assets.BEScripts.Infrastructures.Repositories
     public class EnemyRepository
     {
         private EnemyModelType _model;
-        private const string ENEMY_DATA_KEY = "Enemy";
 
         public async UniTask Initialize()
         {
-            string data = await PlayFabModel.titleData.GetTitleData(ENEMY_DATA_KEY);
+            string data = await PlayFabModel.titleData.GetTitleData(Setting.ENEMY_DATA_KEY);
             // データが存在しない場合はエラー処理を吐き出す
             if (string.IsNullOrEmpty(data))
-                throw new Exception($"Enemy data not found for key: {ENEMY_DATA_KEY}");
+                throw new Exception($"Enemy data not found for key: {Setting.ENEMY_DATA_KEY}");
             // データが存在する場合はデシリアライズしてモデルを初期化
             _model = JsonConvert.DeserializeObject<EnemyModelType>(data);
         }

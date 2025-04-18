@@ -751,6 +751,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293510217}
   m_CullTransparentMesh: 1
+--- !u!1 &1296906507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1296906509}
+  - component: {fileID: 1296906508}
+  m_Layer: 0
+  m_Name: GoogleAdmobManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1296906508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296906507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6adb387cb6051a4d9ec2ba25062e857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onClosedInterstitialAdEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onClosedRewardAdEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1296906509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296906507}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3799708, y: 0.80975693, z: 3487.436}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1582337569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,3 +1822,4 @@ SceneRoots:
   - {fileID: 1625334188}
   - {fileID: 621177454}
   - {fileID: 685960205}
+  - {fileID: 1296906509}

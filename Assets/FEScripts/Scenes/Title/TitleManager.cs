@@ -32,6 +32,7 @@ namespace Assets.FEScripts.Scene.Title
         protected override void InitEvent()
         {
             ui.titleHeaderCanvasUI.SetActions(new Action[] {
+                () => SceneManager.LoadScene("PurchaseScene"),
                 () => ui.detailModalCanvasUI.DisplayCanvas(true),
             });
             ui.playerSettingCanvasUI.SetActions(new Action[] {
