@@ -18,11 +18,6 @@ namespace Assets.FEScripts.Scenes.Title
         {
             get { return _titleCanvasUI; }
         }
-        protected PlayerSettingCanvasUI _playerSettingCanvasUI;
-        public PlayerSettingCanvasUI playerSettingCanvasUI
-        {
-            get { return _playerSettingCanvasUI; }
-        }
         protected PlayButtonCanvasUI _playButtonCanvasUI;
         public PlayButtonCanvasUI playButtonCanvasUI
         {
@@ -41,7 +36,6 @@ namespace Assets.FEScripts.Scenes.Title
             // 各Canvasを取得
             _titleHeaderCanvas = GameObject.Find("TitleHeaderCanvas").GetComponent<Canvas>();
             _titleCanvas = GameObject.Find("TitleCanvas").GetComponent<Canvas>();
-            _playerSettingCanvas = GameObject.Find("PlayerSettingCanvas").GetComponent<Canvas>();
             _playButtonCanvas = GameObject.Find("PlayButtonCanvas").GetComponent<Canvas>();
             _detailModalCanvas = GameObject.Find("DetailModalCanvas").GetComponent<Canvas>();
         }
@@ -53,7 +47,6 @@ namespace Assets.FEScripts.Scenes.Title
             // CanvasUIの設定
             _titleHeaderCanvasUI = _titleHeaderCanvas.GetComponent<TitleHeaderCanvasUI>();
             _titleCanvasUI = _titleCanvas.GetComponent<TitleCanvasUI>();
-            _playerSettingCanvasUI = _playerSettingCanvas.GetComponent<PlayerSettingCanvasUI>();
             _playButtonCanvasUI = _playButtonCanvas.GetComponent<PlayButtonCanvasUI>();
             _detailModalCanvasUI = _detailModalCanvas.GetComponent<DetailModalCanvasUI>();
         }
@@ -65,7 +58,6 @@ namespace Assets.FEScripts.Scenes.Title
             // 各Canvasの初期表示を設定
             _titleHeaderCanvas.enabled = true;
             _titleCanvas.enabled = true;
-            _playerSettingCanvas.enabled = true;
             _playButtonCanvas.enabled = true;
             _detailModalCanvas.enabled = false;
         }
