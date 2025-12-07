@@ -14,7 +14,7 @@ namespace Assets.FEScripts.Scene.Load
         protected override async UniTask InitEntity()
         {
             await base.InitEntity();
-            entity.maxStep = 6;
+            entity.maxStep = 1;
         }
 
         protected override void InitUI()
@@ -50,20 +50,20 @@ namespace Assets.FEScripts.Scene.Load
                     if (entity.step == 0)
                         await DI.loginController.Execute();
                     // Step2: TitleDataの取得
-                    else if (entity.step == 1)
-                        await DI.bringTitleDataController.Execute();
-                    // Step3: UserDataの取得
-                    else if (entity.step == 2)
-                        await DI.bringUserDataController.Execute();
-                    // Step4: UserDataのバージョンの取得
-                    else if (entity.step == 3)
-                        entity.version = await DI.getUserDataController.Execute("Version");
-                    // Step5: ユーザーデータの更新
-                    else if (entity.step == 4)
-                        await CreateUserData(entity.version);
-                    // Step6: 購入情報の取得
-                    else if (entity.step == 5)
-                        await DI.bringCatalogListController.Execute();
+                    // else if (entity.step == 1)
+                    //     await DI.bringTitleDataController.Execute();
+                    // // Step3: UserDataの取得
+                    // else if (entity.step == 2)
+                    //     await DI.bringUserDataController.Execute();
+                    // // Step4: UserDataのバージョンの取得
+                    // else if (entity.step == 3)
+                    //     entity.version = await DI.getUserDataController.Execute("Version");
+                    // // Step5: ユーザーデータの更新
+                    // else if (entity.step == 4)
+                    //     await CreateUserData(entity.version);
+                    // // Step6: 購入情報の取得
+                    // else if (entity.step == 5)
+                    //     await DI.bringCatalogListController.Execute();
                     UpdateSlider();
                 }
             }
