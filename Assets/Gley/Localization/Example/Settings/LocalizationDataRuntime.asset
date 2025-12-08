@@ -1,20 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18308ee2766a5254eb877d924822e595, type: 3}
-  m_Name: LocalizationDataRuntime
-  m_EditorClassIdentifier: 
-  defaultLanguage: 10
-  currentLanguage: 0
-  enableTMProSupport: 0
-  enableNGUISupport: 0
-  usePlaymaker: 0
-  useBolt: 0
+version https://git-lfs.github.com/spec/v1
+oid sha256:e8989efe6b383da54ba41fee1d4559dc07c371727f5ad8850a54160ddc5e785c
+size 553
