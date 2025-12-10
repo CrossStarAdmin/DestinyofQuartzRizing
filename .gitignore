@@ -38,3 +38,11 @@ Logs/
 Assets/Layer Lab/GUI-BlueSky/Preview
 Assets/Layer Lab/GUI-BlueSky/PSD
 Assets/Layer Lab/GUI-BlueSky/Scene
+
+# JetBrains Rider
+[Ll]ibrary/
+[Tt]emp/
+[Bb]uild/
+obj/
+
+Assets/Layer Lab
