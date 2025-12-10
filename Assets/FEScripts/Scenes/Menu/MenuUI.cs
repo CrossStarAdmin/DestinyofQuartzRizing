@@ -8,11 +8,6 @@ namespace Assets.FEScripts.Scenes.Menu
     public class MenuUI : AbstractUI
     {
         protected Canvas _menuCanvas, _detailModalCanvas;
-        protected MenuCanvasUI _menuCanvasUI;
-        public MenuCanvasUI menuCanvasUI
-        {
-            get { return _menuCanvasUI; }
-        }
         protected DetailModalCanvasUI _detailModalCanvasUI;
         public DetailModalCanvasUI detailModalCanvasUI
         {
@@ -33,7 +28,6 @@ namespace Assets.FEScripts.Scenes.Menu
             // BaseのInitCanvasUIを呼び出す
             base.InitCanvasUI();
             // CanvasUIの設定
-            _menuCanvasUI = _menuCanvas.GetComponent<MenuCanvasUI>();
             _detailModalCanvasUI = _detailModalCanvas.GetComponent<DetailModalCanvasUI>();
         }
 
