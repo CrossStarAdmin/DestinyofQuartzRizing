@@ -20,20 +20,6 @@ namespace Assets.FEScripts.Scenes.Title
             }
         }
 
-        private int _playerCount;
-        public int playerCount
-        {
-            get => _playerCount;
-            set
-            {
-                if (value < Setting.MIN_PLAYER_COUNT || value > Setting.MAX_PLAYER_COUNT)
-                {
-                    throw new System.ArgumentOutOfRangeException("PlayerCount must be between 0 and 4.");
-                }
-                _playerCount = value;
-            }
-        }
-
         private string[] _playerNames;
         public string[] playerNames
         {

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Assets.BEScripts.Domains.Types.Responses;
 using Assets.FEScripts.Types;
 using Assets.FEScripts.Types.Transfer;
@@ -7,16 +8,11 @@ namespace Assets.FEScripts.Scenes.Menu
 {
     public class MenuEntity : MonoBehaviour
     {
-        private GetEnemiesResponseType _getEnemiesResponseType;
-        public GetEnemiesResponseType getEnemiesResponseType
-        {
-            set { _getEnemiesResponseType = value; }
-        }
-        public EnemyType[] enemyTypes
+        public List<CharacterType> characterTypes
         {
             get
             {
-                return GetEnemiesResponseTransfer.EnemyTypesTransfer(_getEnemiesResponseType);
+                return Setting.CHARACTER_LIST;
             }
         }
     }

@@ -13,18 +13,11 @@ namespace Assets.FEScripts.Scene.Menu
         protected override async UniTask InitEntity()
         {
             await base.InitEntity();
-            entity.getEnemiesResponseType = await DI.getEnemiesController.Execute();
         }
         protected override void InitUI()
         {
             base.InitUI();
             // EnemyListManagerのデータとActionを設定する
-            Action[] enemyListManagerActions = new Action[entity.enemyTypes.Length];
-            for (int i = 0; i < entity.enemyTypes.Length; i++)
-            {
-                EnemyType enemyType = entity.enemyTypes[i];
-                enemyListManagerActions[i] = () => DisplayDetailModal(enemyType);
-            }
         }
 
         protected override void InitEvent()
@@ -33,6 +26,17 @@ namespace Assets.FEScripts.Scene.Menu
                 new Action[] {
                     () => SceneManager.LoadScene("TitleScene"),
                     () => UnityEngine.Debug.Log("Question Button")
+                }
+            );
+            ui.selectCharacterCanvasUI.SetActions(
+                new Action[] {
+                    () => SelectedPlayerDropdown(),
+                    () => SelectedEnemyDropdown()
+                }
+            );
+            ui.buttonCanvasUI.SetActions(
+                new Action[] {
+                    () => UnityEngine.Debug.Log("Start Button Pressed")
                 }
             );
             ui.detailModalCanvasUI.SetActions(
@@ -46,6 +50,13 @@ namespace Assets.FEScripts.Scene.Menu
         protected override async UniTask InitOriginProcess()
         {
             await UniTask.Delay(0);
+            ui.displayCharacterCanvasUI.InitImages(
+                Setting.selectedPlayerCharacter.abbreviationName,
+                Setting.selectedEnemyCharacter.abbreviationName
+            );
+            ui.selectCharacterCanvasUI.InitDropdowns(
+                entity.characterTypes
+            );
         }
 
         protected void DisplayDetailModal(
@@ -59,6 +70,23 @@ namespace Assets.FEScripts.Scene.Menu
         protected void CloseDetailModal()
         {
             ui.DisplayDetailModalCanvas(false);
+        }
+
+        // ここにMenuManager固有のメソッドを追加
+        public void SelectedPlayerDropdown()
+        {
+            int selectedIndex = ui.selectCharacterCanvasUI.GetSelectedPlayerCharacterIndex();
+            Setting.selectedPlayerCharacter = entity.characterTypes[selectedIndex];
+            string abbreviationName = entity.characterTypes[selectedIndex].abbreviationName;
+            ui.displayCharacterCanvasUI.SetPlayerCharacterImage(abbreviationName);
+        }
+
+        public void SelectedEnemyDropdown()
+        {
+            int selectedIndex = ui.selectCharacterCanvasUI.GetSelectedEnemyCharacterIndex();
+            Setting.selectedEnemyCharacter = entity.characterTypes[selectedIndex];
+            string abbreviationName = entity.characterTypes[selectedIndex].abbreviationName;
+            ui.displayCharacterCanvasUI.SetEnemyCharacterImage(abbreviationName);
         }
     }
 }
