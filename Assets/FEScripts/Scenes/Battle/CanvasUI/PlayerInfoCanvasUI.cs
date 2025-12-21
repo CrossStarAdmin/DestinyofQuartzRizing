@@ -1,5 +1,7 @@
 using System;
 using Assets.FEScripts.Abstracts;
+using Assets.FEScripts.Components.UI;
+using Assets.FEScripts.Types;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,8 +13,10 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
         private Image characterImage;
         private TextMeshProUGUI hpText;
         private Slider hpSlider;
-        private Image[] tensionImages;
-        private Image skillImage;
+        private TensionComponent _tensionComponent;
+        private OriginButtonComponent _hpReduceButton;
+        private OriginButtonComponent _hpAddButton;
+
         private void Awake()
         {
             Canvas canvas = GameObject.Find("PlayerInfoCanvas").GetComponent<Canvas>();
@@ -27,51 +31,50 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
             characterImage = _component.transform.Find("CharacterImage").GetComponent<Image>();
             hpText = _component.transform.Find("HPElement/MainText").GetComponent<TextMeshProUGUI>();
             hpSlider = _component.transform.Find("HPSlider").GetComponent<Slider>();
-            tensionImages = new Image[3];
-            for (int i = 0; i < 3; i++)
-            {
-                tensionImages[i] = _component.transform.Find($"TensionElement/Tension{i + 1}").GetComponent<Image>();
-            }
-            skillImage = _component.transform.Find("TensionElement/TensionSkill/Icon").GetComponent<Image>();
+
+            // TensionComponentの初期化
+            Transform tensionElement = _component.transform.Find("TensionElement");
+            _tensionComponent = tensionElement.gameObject.AddComponent<TensionComponent>();
+            _tensionComponent.InitTensionComponent(tensionElement);
+
+            // HP操作ボタンの初期化
+            _hpReduceButton = _component.transform.Find("HPSlider/ReduceButton").GetComponent<OriginButtonComponent>();
+            _hpAddButton = _component.transform.Find("HPSlider/AddButton").GetComponent<OriginButtonComponent>();
         }
 
         public override void SetActions(Action[] _actions)
         {
             // TODO: アクションの設定処理を実装
+            _hpReduceButton.InitOriginButtonComponent(_actions[0]);
+            _hpAddButton.InitOriginButtonComponent(_actions[1]);
         }
 
-        private void SetCharacterImage()
+        private void SetCharacterImage(CharacterType characterType)
         {
-            characterImage.sprite = Resources.Load<Sprite>("Images/Characters/Skelton/" + Setting.selectedEnemyCharacter.abbreviationName);
+            characterImage.sprite = Resources.Load<Sprite>("Images/Characters/Skelton/" + characterType.abbreviationName + ".skelton");
         }
 
-        private void SetHP(int currentHP)
+        private void SetMaxHP(int maxHP)
+        {
+            hpSlider.maxValue = maxHP;
+        }
+
+        public void SetHP(int currentHP)
         {
             hpText.text = currentHP.ToString();
             hpSlider.value = currentHP;
         }
 
-        private void SetTension(int tensionLevel)
+        public void Init(
+            CharacterType characterType,
+            int maxHP,
+            int tensionLevel
+        )
         {
-            for (int i = 0; i < tensionImages.Length; i++)
-            {
-                tensionImages[i].color = (i < tensionLevel)
-                    ? Setting.COLOR_LIST[0]  // 赤
-                    : Setting.COLOR_LIST[4]; // 黒
-            }
-        }
-
-        private void SetSkillImage()
-        {
-            skillImage.sprite = Resources.Load<Sprite>("Images/Skills/" + Setting.selectedEnemyCharacter.abbreviationName + "Skill");
-        }
-
-        private void Init()
-        {
-            SetCharacterImage();
-            SetHP(Setting.initHP);
-            SetTension(Setting.initSecondTension);
-            SetSkillImage();
+            SetCharacterImage(characterType);
+            SetMaxHP(maxHP);
+            SetHP(maxHP);
+            _tensionComponent.Initialize(tensionLevel, characterType.abbreviationName);
         }
 
         // プレイヤー情報を更新するメソッド

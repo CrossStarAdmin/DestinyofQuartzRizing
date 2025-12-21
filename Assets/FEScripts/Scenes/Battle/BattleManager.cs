@@ -3,6 +3,7 @@ using Assets.BEScripts;
 using Assets.FEScripts.Abstracts;
 using Assets.FEScripts.Scenes.Battle;
 using Cysharp.Threading.Tasks;
+using JetBrains.Annotations;
 using UnityEngine.SceneManagement;
 
 namespace Assets.FEScripts.Scene.Battle
@@ -13,6 +14,16 @@ namespace Assets.FEScripts.Scene.Battle
         {
             await base.InitEntity();
             // TODO: バトルエンティティの初期化処理
+            entity.playerCharacter = Setting.selectedPlayerCharacter;
+            entity.enemyCharacter = Setting.selectedEnemyCharacter;
+            entity.maxHP = Setting.initHP;
+            entity.maxMP = Setting.initMP;
+            entity.playerCurrentHP = Setting.initHP;
+            entity.playerCurrentMP = Setting.initMP;
+            entity.enemyCurrentHP = Setting.initHP;
+            entity.enemyCurrentMP = Setting.initMP;
+            entity.playerTension = Setting.initFirstTension;
+            entity.enemyTension = Setting.initSecondTension;
         }
 
         protected override void InitUI()
@@ -62,8 +73,11 @@ namespace Assets.FEScripts.Scene.Battle
             // EnemyInfoCanvasのアクション設定（アクション不要）
             ui.enemyInfoCanvasUI.SetActions(new Action[] { });
 
-            // PlayerInfoCanvasのアクション設定（アクション不要）
-            ui.playerInfoCanvasUI.SetActions(new Action[] { });
+            // PlayerInfoCanvasのアクション設定
+            ui.playerInfoCanvasUI.SetActions(new Action[] {
+                () => ReducePlayerHP(),
+                () => AddPlayerHP(),
+            });
 
             // PlayerMPCanvasのアクション設定（アクション不要、ボタンは内部処理）
             ui.playerMPCanvasUI.SetActions(new Action[] { });
@@ -73,6 +87,32 @@ namespace Assets.FEScripts.Scene.Battle
         {
             await UniTask.Delay(0);
             UnityEngine.Debug.Log("Battle Start: Initialize battle process");
+            // 相手側の情報をUIに反映
+            ui.enemyInfoCanvasUI.Init(
+                entity.enemyCharacter,
+                entity.maxHP,
+                entity.enemyTension
+            );
+            // 味方側の情報をUIに反映
+            ui.playerInfoCanvasUI.Init(
+                entity.playerCharacter,
+                entity.maxHP,
+                entity.playerTension
+            );
+        }
+
+        private void AddPlayerHP()
+        {
+            if (entity.playerCurrentHP >= entity.maxHP) return;
+            entity.playerCurrentHP += 1;
+            ui.playerInfoCanvasUI.SetHP(entity.playerCurrentHP);
+        }
+
+        private void ReducePlayerHP()
+        {
+            if (entity.playerCurrentHP <= 0) return;
+            entity.playerCurrentHP -= 1;
+            ui.playerInfoCanvasUI.SetHP(entity.playerCurrentHP);
         }
 
         // // バトルアクション関連メソッド

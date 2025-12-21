@@ -43,7 +43,7 @@ namespace Assets.FEScripts
         public static int initFirstTension = 0;
         public static int initSecondTension = 2;
 
-        public static CharacterType selectedPlayerCharacter = CHARACTER_LIST[0];
-        public static CharacterType selectedEnemyCharacter = CHARACTER_LIST[0];
+        public static CharacterType selectedPlayerCharacter = CHARACTER_LIST[1];
+        public static CharacterType selectedEnemyCharacter = CHARACTER_LIST[1];
     }
 }

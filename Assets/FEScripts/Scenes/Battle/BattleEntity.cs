@@ -9,11 +9,15 @@ namespace Assets.FEScripts.Scenes.Battle
         // TODO: バトルに必要なエンティティデータを追加
         public CharacterType playerCharacter;
         public CharacterType enemyCharacter;
-        
+
         // バトルステータス
+        public int maxHP;
+        public int maxMP;
         public int playerCurrentHP;
         public int playerCurrentMP;
         public int enemyCurrentHP;
         public int enemyCurrentMP;
+        public int playerTension;
+        public int enemyTension;
     }
 }

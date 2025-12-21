@@ -1,7 +1,10 @@
 using System;
 using Assets.FEScripts.Abstracts;
+using Assets.FEScripts.Components.UI;
+using Assets.FEScripts.Types;
 using TMPro;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 namespace Assets.FEScripts.Scenes.Battle.CanvasUI
@@ -12,8 +15,7 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
         private TextMeshProUGUI hpText;
         private TextMeshProUGUI mpText;
         private Slider hpSlider;
-        private Image[] tensionImages;
-        private Image skillImage;
+        private TensionComponent _tensionComponent;
         private void Awake()
         {
             Canvas canvas = GameObject.Find("EnemyInfoCanvas").GetComponent<Canvas>();
@@ -29,12 +31,11 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
             hpText = _component.transform.Find("EnemyElement/HPElement/MainText").GetComponent<TextMeshProUGUI>();
             mpText = _component.transform.Find("EnemyElement/MPElement/MainText").GetComponent<TextMeshProUGUI>();
             hpSlider = _component.transform.Find("EnemyElement/HPSlider").GetComponent<Slider>();
-            tensionImages = new Image[3];
-            for (int i = 0; i < 3; i++)
-            {
-                tensionImages[i] = _component.transform.Find($"EnemyElement/TensionElement/Tension{i + 1}").GetComponent<Image>();
-            }
-            skillImage = _component.transform.Find("EnemyElement/TensionElement/TensionSkill/Icon").GetComponent<Image>();
+            
+            // TensionComponentの初期化
+            Transform tensionElement = _component.transform.Find("EnemyElement/TensionElement");
+            _tensionComponent = tensionElement.gameObject.AddComponent<TensionComponent>();
+            _tensionComponent.InitTensionComponent(tensionElement);
         }
 
         public override void SetActions(Action[] _actions)
@@ -42,9 +43,14 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
             // TODO: アクションの設定処理を実装
         }
 
-        private void SetCharacterImage()
+        private void SetCharacterImage(CharacterType characterType)
         {
-            characterImage.sprite = Resources.Load<Sprite>("Images/Characters/Skelton/" + Setting.selectedEnemyCharacter.abbreviationName);
+            characterImage.sprite = Resources.Load<Sprite>("Images/Characters/Skelton/" + characterType.abbreviationName + ".skelton");
+        }
+
+        private void SetMaxHP(int maxHP)
+        {
+            hpSlider.maxValue = maxHP;
         }
 
         private void SetHP(int currentHP)
@@ -58,28 +64,16 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
             mpText.text = currentMP.ToString();
         }
 
-        private void SetTension(int tensionLevel)
+        public void Init(
+            CharacterType characterType,
+            int maxHP,
+            int tensionLevel
+        )
         {
-            for (int i = 0; i < tensionImages.Length; i++)
-            {
-                tensionImages[i].color = (i < tensionLevel)
-                    ? Setting.COLOR_LIST[0]  // 赤
-                    : Setting.COLOR_LIST[4]; // 黒
-            }
-        }
-
-        private void SetSkillImage()
-        {
-            skillImage.sprite = Resources.Load<Sprite>("Images/Skills/" + Setting.selectedEnemyCharacter.abbreviationName + "Skill");
-        }
-
-        private void Init()
-        {
-            SetCharacterImage();
-            SetHP(Setting.initHP);
-            SetMP(Setting.initMP);
-            SetTension(Setting.initSecondTension);
-            SetSkillImage();
+            SetCharacterImage(characterType);
+            SetHP(maxHP);
+            SetMP(0);
+            _tensionComponent.Initialize(tensionLevel, characterType.abbreviationName);
         }
 
         // 敵情報を更新するメソッド
