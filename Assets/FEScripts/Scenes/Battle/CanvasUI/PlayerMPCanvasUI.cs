@@ -19,6 +19,7 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
         private OriginButtonComponent upButton;
         private OriginButtonComponent downButton;
         private mpIcon[] mpIcons = new mpIcon[10];
+
         private void Awake()
         {
             Canvas canvas = GameObject.Find("PlayerMPCanvas").GetComponent<Canvas>();
@@ -43,25 +44,59 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
 
         public override void SetActions(Action[] _actions)
         {
-            // TODO: アクションの設定処理を実装
+            if (_actions.Length >= 1)
+                upButton.InitOriginButtonComponent(_actions[0]);
+            
+            if (_actions.Length >= 2)
+                downButton.InitOriginButtonComponent(_actions[1]);
+        }
+        
+        /// <summary>
+        /// MP表示を更新
+        /// </summary>
+        /// <param name="_availableMP">利用可能MP</param>
+        /// <param name="_maxMP">最大MP</param>
+        public void UpdateMPDisplay(int _availableMP, int _maxMP)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (i < _availableMP)
+                {
+                    // 利用中のMP（明るい青）
+                    SetMPButton(i, "active");
+                }
+                else if (i < _maxMP)
+                {
+                    // 利用可能だが未使用のMP（黒）
+                    SetMPButton(i, "inactive");
+                }
+                else
+                {
+                    // 利用不可能なMP（灰色）
+                    SetMPButton(i, "disabled");
+                }
+            }
         }
 
         public void SetMPButton(int index, string status)
         {
             if (status == "active")
             {
-                mpIcons[index].mpImage.color = Setting.COLOR_LIST[2]; // 明るい青
-                mpIcons[index].outline.effectColor = Setting.COLOR_LIST[3]; // 紫
+                mpIcons[index].mpImage.color = Setting.GetColor("lightBlue", 255); // 明るい青
+                mpIcons[index].outline.effectColor = Setting.GetColor("purple", 255); // 紫
+                mpIcons[index].mpIconImage.color = Setting.GetColor("white", 70); // 白
             }
             if (status == "inactive")
             {
-                mpIcons[index].mpImage.color = Setting.COLOR_LIST[4]; // 黒
-                mpIcons[index].outline.effectColor = Setting.COLOR_LIST[6]; // 灰
+                mpIcons[index].mpImage.color = Setting.GetColor("darkRed", 255); // 黒
+                mpIcons[index].outline.effectColor = Setting.GetColor("gray", 255); // 灰
+                mpIcons[index].mpIconImage.color = Setting.GetColor("white", 30); // 白
             }
             if (status == "disabled")
             {
-                mpIcons[index].mpImage.color = Setting.COLOR_LIST[6]; // 灰
-                mpIcons[index].outline.effectColor = Setting.COLOR_LIST[6]; // 灰
+                mpIcons[index].mpImage.color = Setting.GetColor("gray", 255); // 灰
+                mpIcons[index].outline.effectColor = Setting.GetColor("gray", 255); // 灰
+                mpIcons[index].mpIconImage.color = Setting.GetColor("white", 10); // 白
             }
         }
 
@@ -74,9 +109,9 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
         }
 
         // プレイヤーMPを更新するメソッド
-        public void UpdatePlayerMP(int currentMP, int maxMP)
+        public void UpdatePlayerMP(int availableMP, int maxMP)
         {
-            // TODO: MP表示の更新処理を実装
+            UpdateMPDisplay(availableMP, maxMP);
         }
     }
 }

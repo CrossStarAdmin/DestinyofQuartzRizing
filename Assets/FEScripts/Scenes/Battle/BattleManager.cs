@@ -13,17 +13,6 @@ namespace Assets.FEScripts.Scene.Battle
         protected override async UniTask InitEntity()
         {
             await base.InitEntity();
-            // TODO: バトルエンティティの初期化処理
-            entity.playerCharacter = Setting.selectedPlayerCharacter;
-            entity.enemyCharacter = Setting.selectedEnemyCharacter;
-            entity.maxHP = Setting.initHP;
-            entity.maxMP = Setting.initMP;
-            entity.playerCurrentHP = Setting.initHP;
-            entity.playerCurrentMP = Setting.initMP;
-            entity.enemyCurrentHP = Setting.initHP;
-            entity.enemyCurrentMP = Setting.initMP;
-            entity.playerTension = Setting.initFirstTension;
-            entity.enemyTension = Setting.initSecondTension;
         }
 
         protected override void InitUI()
@@ -58,7 +47,7 @@ namespace Assets.FEScripts.Scene.Battle
                     }
                 }
             );
-            
+
             // DetailModalCanvasのアクション設定
             ui.detailModalCanvasUI.SetActions(
                 new Action[] {
@@ -79,8 +68,13 @@ namespace Assets.FEScripts.Scene.Battle
                 () => AddPlayerHP(),
             });
 
-            // PlayerMPCanvasのアクション設定（アクション不要、ボタンは内部処理）
-            ui.playerMPCanvasUI.SetActions(new Action[] { });
+            // PlayerMPCanvasのアクション設定（UpButton, DownButton）
+            ui.playerMPCanvasUI.SetActions(
+                new Action[] {
+                    () => AddPlayerMP(),
+                    () => ReducePlayerMP()
+                }
+            );
         }
 
         protected override async UniTask InitOriginProcess()
@@ -89,30 +83,43 @@ namespace Assets.FEScripts.Scene.Battle
             UnityEngine.Debug.Log("Battle Start: Initialize battle process");
             // 相手側の情報をUIに反映
             ui.enemyInfoCanvasUI.Init(
-                entity.enemyCharacter,
-                entity.maxHP,
-                entity.enemyTension
+                entity.EnemyCharacter,
+                entity.MaxHP,
+                entity.EnemyTension
             );
             // 味方側の情報をUIに反映
             ui.playerInfoCanvasUI.Init(
-                entity.playerCharacter,
-                entity.maxHP,
-                entity.playerTension
+                entity.PlayerCharacter,
+                entity.MaxHP,
+                entity.PlayerTension
             );
+            // MPのリセット
+            ui.playerMPCanvasUI.Init();
+            ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
         }
 
         private void AddPlayerHP()
         {
-            if (entity.playerCurrentHP >= entity.maxHP) return;
-            entity.playerCurrentHP += 1;
-            ui.playerInfoCanvasUI.SetHP(entity.playerCurrentHP);
+            entity.IncrementPlayerHP();
+            ui.playerInfoCanvasUI.SetHP(entity.PlayerCurrentHP);
         }
 
         private void ReducePlayerHP()
         {
-            if (entity.playerCurrentHP <= 0) return;
-            entity.playerCurrentHP -= 1;
-            ui.playerInfoCanvasUI.SetHP(entity.playerCurrentHP);
+            entity.DecrementPlayerHP();
+            ui.playerInfoCanvasUI.SetHP(entity.PlayerCurrentHP);
+        }
+
+        private void AddPlayerMP()
+        {
+            entity.IncrementPlayerMP();
+            ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
+        }
+
+        private void ReducePlayerMP()
+        {
+            entity.DecrementPlayerMP();
+            ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
         }
 
         // // バトルアクション関連メソッド
