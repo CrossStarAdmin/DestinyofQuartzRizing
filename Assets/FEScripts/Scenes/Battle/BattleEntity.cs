@@ -111,5 +111,9 @@ namespace Assets.FEScripts.Scenes.Battle
             if (playerAvailableMP <= 0) return;
             playerAvailableMP -= 1;
         }
+        public void RecoverPlayerAvailableMP()
+        {
+            playerAvailableMP = playerCurrentMP;
+        }
     }
 }

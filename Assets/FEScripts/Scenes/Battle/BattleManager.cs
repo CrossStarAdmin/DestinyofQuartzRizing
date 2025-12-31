@@ -39,7 +39,7 @@ namespace Assets.FEScripts.Scene.Battle
                 new Action[] {
                     () => {
                         UnityEngine.Debug.Log("Start Turn Button: Player turn started");
-                        // StartPlayerTurn();
+                        TurnStart();
                     },
                     () => {
                         UnityEngine.Debug.Log("Dice Button: Roll dice");
@@ -95,6 +95,16 @@ namespace Assets.FEScripts.Scene.Battle
             );
             // MPのリセット
             ui.playerMPCanvasUI.Init();
+            ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
+        }
+
+        private void TurnStart()
+        {
+            // MPを+1する
+            entity.IncrementPlayerMP();
+            // AvailableMPを全て回復
+            entity.RecoverPlayerAvailableMP();
+            // UIを更新
             ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
         }
 
