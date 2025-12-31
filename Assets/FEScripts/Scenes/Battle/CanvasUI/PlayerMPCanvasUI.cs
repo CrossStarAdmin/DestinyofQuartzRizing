@@ -2,6 +2,7 @@ using System;
 using Assets.FEScripts.Abstracts;
 using Assets.FEScripts.Components.UI;
 using Codice.Client.Commands;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,10 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
         private OriginButtonComponent upButton;
         private OriginButtonComponent downButton;
         private mpIcon[] mpIcons = new mpIcon[10];
+        private OriginButtonComponent upAvailableButton;
+        private OriginButtonComponent downAvailableButton;
+        private TextMeshProUGUI currentAvailableMPText;
+        private TextMeshProUGUI currentMPText;
 
         private void Awake()
         {
@@ -31,8 +36,8 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
             // BaseのInitObjectを呼び出す
             base.InitObject(_canvas);
             // 各コンポーネントを取得
-            upButton = _component.transform.Find("UpButton").GetComponent<OriginButtonComponent>();
-            downButton = _component.transform.Find("DownButton").GetComponent<OriginButtonComponent>();
+            upButton = _component.transform.Find("MPElement/UpButton").GetComponent<OriginButtonComponent>();
+            downButton = _component.transform.Find("MPElement/DownButton").GetComponent<OriginButtonComponent>();
             for (int i = 0; i < 10; i++)
             {
                 mpIcons[i] = new mpIcon();
@@ -40,15 +45,22 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
                 mpIcons[i].outline = mpIcons[i].mpImage.GetComponent<Outline>();
                 mpIcons[i].mpIconImage = mpIcons[i].mpImage.transform.Find("Icon").GetComponent<Image>();
             }
+            upAvailableButton = _component.transform.Find("AvailableMPElement/UpAvailableButton").GetComponent<OriginButtonComponent>();
+            downAvailableButton = _component.transform.Find("AvailableMPElement/DownAvailableButton").GetComponent<OriginButtonComponent>();
+            currentAvailableMPText = _component.transform.Find("AvailableMPElement/Background/CurrentAvailableMP").GetComponent<TextMeshProUGUI>();
+            currentMPText = _component.transform.Find("AvailableMPElement/Background/CurrentMP").GetComponent<TextMeshProUGUI>();
         }
 
         public override void SetActions(Action[] _actions)
         {
             if (_actions.Length >= 1)
                 upButton.InitOriginButtonComponent(_actions[0]);
-            
             if (_actions.Length >= 2)
                 downButton.InitOriginButtonComponent(_actions[1]);
+            if (_actions.Length >= 3)
+                upAvailableButton.InitOriginButtonComponent(_actions[2]);
+            if (_actions.Length >= 4)
+                downAvailableButton.InitOriginButtonComponent(_actions[3]);
         }
         
         /// <summary>
@@ -100,18 +112,18 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
             }
         }
 
+        public void SetMPText(int _currentMP, int _currentAvailableMP)
+        {
+            currentMPText.text = _currentMP.ToString();
+            currentAvailableMPText.text = _currentAvailableMP.ToString();
+        }
+
         public void Init()
         {
             for (int i = 0; i < 10; i++)
             {
                 SetMPButton(i, "disabled");
             }
-        }
-
-        // プレイヤーMPを更新するメソッド
-        public void UpdatePlayerMP(int availableMP, int maxMP)
-        {
-            UpdateMPDisplay(availableMP, maxMP);
         }
     }
 }

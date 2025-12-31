@@ -72,7 +72,9 @@ namespace Assets.FEScripts.Scene.Battle
             ui.playerMPCanvasUI.SetActions(
                 new Action[] {
                     () => AddPlayerMP(),
-                    () => ReducePlayerMP()
+                    () => ReducePlayerMP(),
+                    () => AddPlayerAvailableMP(),
+                    () => ReducePlayerAvailableMP()
                 }
             );
         }
@@ -96,6 +98,7 @@ namespace Assets.FEScripts.Scene.Battle
             // MPのリセット
             ui.playerMPCanvasUI.Init();
             ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
+            ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
         }
 
         private void TurnStart()
@@ -106,6 +109,7 @@ namespace Assets.FEScripts.Scene.Battle
             entity.RecoverPlayerAvailableMP();
             // UIを更新
             ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
+            ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
         }
 
         private void AddPlayerHP()
@@ -124,12 +128,28 @@ namespace Assets.FEScripts.Scene.Battle
         {
             entity.IncrementPlayerMP();
             ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
+            ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
         }
 
         private void ReducePlayerMP()
         {
             entity.DecrementPlayerMP();
             ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
+            ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
+        }
+
+        private void AddPlayerAvailableMP()
+        {
+            entity.IncrementPlayerAvailableMP();
+            ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
+            ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
+        }
+
+        private void ReducePlayerAvailableMP()
+        {
+            entity.DecrementPlayerAvailableMP();
+            ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
+            ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
         }
 
         // // バトルアクション関連メソッド
