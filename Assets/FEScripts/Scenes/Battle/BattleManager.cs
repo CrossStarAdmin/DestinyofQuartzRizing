@@ -112,8 +112,8 @@ namespace Assets.FEScripts.Scene.Battle
             ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
 
             // カードの設定
-            ui.playerInfoCanvasUI.SetTensionCardEnabled(true);
-            ui.playerInfoCanvasUI.SetHolyCardEnabled(true);
+            ui.playerInfoCanvasUI.SetTensionCardEnabled(false);
+            ui.playerInfoCanvasUI.SetHolyCardEnabled(false);
         }
 
         // ==================================================
@@ -121,10 +121,22 @@ namespace Assets.FEScripts.Scene.Battle
         // ==================================================
         private void TurnStart()
         {
+            // テンションが3以下ならば、テンションカードを有効化
+            entity.ResetUsedTensionCard();
+            if (entity.PlayerTension < 3)
+            {
+                ui.playerInfoCanvasUI.SetTensionCardEnabled(true);
+            }
             // 聖水を利用してた場合、MPを減らす
-            if (entity.IsUsedHolyCard)
+            if (entity.IsUsedHolyCard && !entity.IsFinishedHolyCardChange)
             {
                 entity.DecrementPlayerMP();
+                entity.FinishedHolyCardChange();
+            }
+            // まだ利用してない場合は聖水カードを有効化
+            if (!entity.IsUsedHolyCard)
+            {
+                ui.playerInfoCanvasUI.SetHolyCardEnabled(true);
             }
             // MPを+1する
             entity.IncrementPlayerMP();
@@ -133,12 +145,6 @@ namespace Assets.FEScripts.Scene.Battle
             // UIを更新
             ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
             ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
-            // テンションが3以下ならば、テンションカードを有効化
-            entity.ResetUsedTensionCard();
-            if (entity.PlayerTension < 3)
-            {
-                ui.playerInfoCanvasUI.SetTensionCardEnabled(true);
-            }
         }
 
         // ==================================================
@@ -147,9 +153,15 @@ namespace Assets.FEScripts.Scene.Battle
         private void UseTensionCard()
         {
             UnityEngine.Debug.Log("TensionCard: Card used!");
+            // 利用可能MPが0の場合は何もしない
+            if (entity.PlayerAvailableMP == 0) return;
             // テンションを１つ増加
             entity.IncrementPlayerTension();
+            // MPを1つ減少
+            entity.DecrementPlayerAvailableMP();
             // UIを更新
+            ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
+            ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
             ui.playerInfoCanvasUI.SetTension(entity.PlayerTension);
             // カードを無効化
             entity.UsedTensionCard();
