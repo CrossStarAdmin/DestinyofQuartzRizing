@@ -4,6 +4,7 @@ using Assets.FEScripts.Abstracts;
 using Assets.FEScripts.Scenes.Battle;
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Assets.FEScripts.Scene.Battle
@@ -33,7 +34,6 @@ namespace Assets.FEScripts.Scene.Battle
                     () => UnityEngine.Debug.Log("Question Button: Show Help")
                 }
             );
-
             // PlayerMenuCanvasのアクション設定（StartTurnButton, DiceButton）
             ui.playerMenuCanvasUI.SetActions(
                 new Action[] {
@@ -47,7 +47,6 @@ namespace Assets.FEScripts.Scene.Battle
                     }
                 }
             );
-
             // DetailModalCanvasのアクション設定
             ui.detailModalCanvasUI.SetActions(
                 new Action[] {
@@ -58,7 +57,6 @@ namespace Assets.FEScripts.Scene.Battle
                     }
                 }
             );
-
             // EnemyInfoCanvasのアクション設定（アクション不要）
             ui.enemyInfoCanvasUI.SetActions(new Action[] { });
 
@@ -66,6 +64,9 @@ namespace Assets.FEScripts.Scene.Battle
             ui.playerInfoCanvasUI.SetActions(new Action[] {
                 () => ReducePlayerHP(),
                 () => AddPlayerHP(),
+                () => UseTensionCard(),
+                () => UseHolyCard(),
+                () => SkillButtonAction()
             });
 
             // PlayerMPCanvasのアクション設定（UpButton, DownButton）
@@ -99,10 +100,46 @@ namespace Assets.FEScripts.Scene.Battle
             ui.playerMPCanvasUI.Init();
             ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
             ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
+            // カードの設定
+            ui.playerInfoCanvasUI.SetTensionCardEnabled(true);
+            ui.playerInfoCanvasUI.SetHolyCardEnabled(true);
+        }
+
+        private void UseTensionCard()
+        {
+            UnityEngine.Debug.Log("TensionCard: Card used!");
+            // テンションを１つ増加
+            entity.IncrementPlayerTension();
+            // UIを更新
+            ui.playerInfoCanvasUI.SetTension(entity.PlayerTension);
+            // カードを無効化
+            entity.UsedTensionCard();
+            ui.playerInfoCanvasUI.SetTensionCardEnabled(false);
+        }
+
+        private void UseHolyCard()
+        {
+            UnityEngine.Debug.Log("HolyCard: Card used!");
+            // 最大MPを1増加
+            entity.IncrementPlayerMP();
+            // 利用できるMPも1増加
+            entity.IncrementPlayerAvailableMP();
+            // UIを更新
+            ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
+            ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
+            // カードを無効化
+            ui.playerInfoCanvasUI.SetHolyCardEnabled(false);
+            // HolyCard使用フラグを立てる
+            entity.UsedHolyCard();
         }
 
         private void TurnStart()
         {
+            // 聖水を利用してた場合、MPを減らす
+            if (entity.IsUsedHolyCard)
+            {
+                entity.DecrementPlayerMP();
+            }
             // MPを+1する
             entity.IncrementPlayerMP();
             // AvailableMPを全て回復
@@ -110,6 +147,12 @@ namespace Assets.FEScripts.Scene.Battle
             // UIを更新
             ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
             ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
+            // テンションが3以下ならば、テンションカードを有効化
+            entity.ResetUsedTensionCard();
+            if (entity.PlayerTension < 3)
+            {
+                ui.playerInfoCanvasUI.SetTensionCardEnabled(true);
+            }
         }
 
         private void AddPlayerHP()
@@ -150,6 +193,18 @@ namespace Assets.FEScripts.Scene.Battle
             entity.DecrementPlayerAvailableMP();
             ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
             ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
+        }
+
+        public void SkillButtonAction()
+        {
+            if (entity.PlayerTension < 3) return;
+            entity.ResetPlayerTension();
+            ui.playerInfoCanvasUI.SetTension(entity.PlayerTension);
+            // テンションカードを復活
+            if (entity.IsUsedTensionCard == false)
+            {
+                ui.playerInfoCanvasUI.SetTensionCardEnabled(true);
+            }
         }
 
         // // バトルアクション関連メソッド

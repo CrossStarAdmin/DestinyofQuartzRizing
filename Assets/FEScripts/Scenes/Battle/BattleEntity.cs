@@ -28,6 +28,9 @@ namespace Assets.FEScripts.Scenes.Battle
         private int playerCurrentMP;
         private int playerAvailableMP;
         private int playerTension;
+        private bool isUsedTensionCard = false;
+        private bool isUsedHolyCard = false;
+        private bool isFinishedHolyCardChange = false;
         public int PlayerCurrentHP {
             get { return playerCurrentHP; }
         }
@@ -39,6 +42,15 @@ namespace Assets.FEScripts.Scenes.Battle
         }
         public int PlayerTension {
             get { return playerTension; }
+        }
+        public bool IsUsedTensionCard {
+            get { return isUsedTensionCard; }
+        }
+        public bool IsUsedHolyCard {
+            get { return isUsedHolyCard; }
+        }
+        public bool IsFinishedHolyCardChange {
+            get { return isFinishedHolyCardChange; }
         }
 
         // Enemy関係
@@ -76,6 +88,7 @@ namespace Assets.FEScripts.Scenes.Battle
             enemyTension = Setting.initSecondTension;
         }
 
+        // Player関係
         public void IncrementPlayerHP()
         {
             if (playerCurrentHP >= maxHP) return;
@@ -114,6 +127,41 @@ namespace Assets.FEScripts.Scenes.Battle
         public void RecoverPlayerAvailableMP()
         {
             playerAvailableMP = playerCurrentMP;
+        }
+        public void IncrementPlayerTension()
+        {
+            if (playerTension > 3) return;
+            playerTension += 1;
+        }
+        public void ResetPlayerTension()
+        {
+            playerTension = 0;
+        }
+        public void UsedTensionCard()
+        {
+            isUsedTensionCard = true;
+        }
+        public void ResetUsedTensionCard()
+        {
+            isUsedTensionCard = false;
+        }
+        public void UsedHolyCard()
+        {
+            isUsedHolyCard = true;
+        }
+        public void FinishedHolyCardChange()
+        {
+            isFinishedHolyCardChange = true;
+        }
+        // Enemy関係
+        public void IncrementEnemyTension()
+        {
+            if (enemyTension > 3) return;
+            enemyTension += 1;
+        }
+        public void ResetEnemyTension()
+        {
+            enemyTension = 0;
         }
     }
 }

@@ -16,6 +16,8 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
         private TensionComponent _tensionComponent;
         private OriginButtonComponent _hpReduceButton;
         private OriginButtonComponent _hpAddButton;
+        private CardComponent _tensionCardComponent;
+        private CardComponent _holyCardComponent;
 
         private void Awake()
         {
@@ -40,6 +42,10 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
             // HP操作ボタンの初期化
             _hpReduceButton = _component.transform.Find("HPSlider/ReduceButton").GetComponent<OriginButtonComponent>();
             _hpAddButton = _component.transform.Find("HPSlider/AddButton").GetComponent<OriginButtonComponent>();
+
+            // カード関係の初期化
+            _tensionCardComponent = _component.transform.Find("CardElement/TensionCardImage").GetComponent<CardComponent>();
+            _holyCardComponent = _component.transform.Find("CardElement/HolyCardImage").GetComponent<CardComponent>();
         }
 
         public override void SetActions(Action[] _actions)
@@ -47,6 +53,9 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
             // TODO: アクションの設定処理を実装
             _hpReduceButton.InitOriginButtonComponent(_actions[0]);
             _hpAddButton.InitOriginButtonComponent(_actions[1]);
+            _tensionCardComponent.InitCardComponent(_actions[2]);
+            _holyCardComponent.InitCardComponent(_actions[3]);
+            _tensionComponent.SetSkillAction(_actions[4]);
         }
 
         private void SetCharacterImage(CharacterType characterType)
@@ -81,6 +90,35 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
         public void UpdatePlayerInfo(string name, int currentHP, int maxHP)
         {
             // TODO: プレイヤー情報の表示更新処理を実装
+        }
+
+        public void SetTension(int tensionLevel)
+        {
+            _tensionComponent.SetTension(tensionLevel);
+        }
+
+        ///<summary>
+        /// テンションカードのドラッグ可否を設定
+        ///</summary>
+        /// <param name="_enabled">有効/無効</param>
+        public void SetTensionCardEnabled(bool _enabled)
+        {
+            if (_tensionCardComponent != null)
+            {
+                _tensionCardComponent.SetCardEnabled(_enabled);
+            }
+        }
+
+        /// <summary>
+        /// 聖水カードのドラッグ可否を設定
+        /// </summary>
+        /// <param name="_enabled">有効/無効</param>
+        public void SetHolyCardEnabled(bool _enabled)
+        {
+            if (_holyCardComponent != null)
+            {
+                _holyCardComponent.SetCardEnabled(_enabled);
+            }
         }
     }
 }

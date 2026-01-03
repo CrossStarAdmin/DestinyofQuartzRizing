@@ -37,6 +37,8 @@ namespace Assets.FEScripts
         public const string ANDROID_BANNER_AD_UNIT_ID = "";
         public const string ANDROID_INTERSTITIAL_AD_UNIT_ID = "";
         public const string ANDROID_REWARD_AD_UNIT_ID = "";
+        // 距離
+        public const float CARD_MOVE_DISTANCE = 230f;
 
         // 変数
         public static int initHP = 25;

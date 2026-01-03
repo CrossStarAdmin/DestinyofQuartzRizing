@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,8 @@ namespace Assets.FEScripts.Components.UI
     {
         private Image[] _tensionImages;
         private Image _skillImage;
+        private OriginButtonComponent _skillButton;
+        // private Outline _skillButtonOutline;
 
         /// <summary>
         /// テンションコンポーネントの初期化
@@ -20,6 +23,17 @@ namespace Assets.FEScripts.Components.UI
                 _tensionImages[i] = _tensionElement.Find($"Tension{i + 1}").GetComponent<Image>();
             }
             _skillImage = _tensionElement.Find("TensionSkill/Icon").GetComponent<Image>();
+            _skillButton = _tensionElement.Find("TensionSkill").GetComponent<OriginButtonComponent>();
+            // _skillButtonOutline = _skillButton.GetComponent<Outline>();
+        }
+
+        /// <summary>
+        /// スキルボタンのアクションを設定
+        /// </summary>
+        /// <param name="_action">アクション</param>
+        public void SetSkillAction(Action _action)
+        {
+            _skillButton.InitOriginButtonComponent(_action);
         }
 
         /// <summary>
@@ -34,6 +48,10 @@ namespace Assets.FEScripts.Components.UI
                     ? Setting.COLOR_LIST[0]  // 赤
                     : Setting.COLOR_LIST[4]; // 黒
             }
+            // if (_tensionLevel >= 3)
+            // {
+            //     _skillButtonOutline.effectColor = Setting.GetColor("red", 255); // 赤
+            // }
         }
 
         /// <summary>
