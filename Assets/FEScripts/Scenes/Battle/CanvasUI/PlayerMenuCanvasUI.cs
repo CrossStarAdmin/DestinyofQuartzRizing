@@ -7,10 +7,15 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
 {
     public class PlayerMenuCanvasUI : AbstractCanvasUI
     {
+        // ==================================================
+        // フィールド
+        // ==================================================
         private OriginButtonComponent startTurnButton;
         private OriginButtonComponent diceButton;
 
-
+        // ==================================================
+        // 初期化
+        // ==================================================
         private void Awake()
         {
             Canvas canvas = GameObject.Find("PlayerMenuCanvas").GetComponent<Canvas>();
@@ -28,7 +33,6 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
 
         public override void SetActions(Action[] _actions)
         {
-            // TODO: 各メニューボタンのアクション設定処理を実装
             startTurnButton.InitOriginButtonComponent(_actions[0]);
             diceButton.InitOriginButtonComponent(_actions[1]);
         }

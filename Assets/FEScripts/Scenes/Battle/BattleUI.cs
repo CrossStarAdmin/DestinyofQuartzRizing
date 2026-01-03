@@ -7,82 +7,101 @@ namespace Assets.FEScripts.Scenes.Battle
 {
     public class BattleUI : AbstractUI
     {
-        protected Canvas _enemyInfoCanvas, _playerMPCanvas, _playerMenuCanvas, _playerInfoCanvas, _detailModalCanvas;
+        // ==================================================
+        // Canvas フィールド
+        // ==================================================
+        protected Canvas _enemyInfoCanvas;
+        protected Canvas _playerInfoCanvas;
+        protected Canvas _playerMPCanvas;
+        protected Canvas _playerMenuCanvas;
+        protected Canvas _detailModalCanvas;
         
+        // ==================================================
+        // CanvasUI フィールドとプロパティ - Enemy
+        // ==================================================
         protected EnemyInfoCanvasUI _enemyInfoCanvasUI;
-        public EnemyInfoCanvasUI enemyInfoCanvasUI
-        {
-            get { return _enemyInfoCanvasUI; }
-        }
+        public EnemyInfoCanvasUI enemyInfoCanvasUI { get { return _enemyInfoCanvasUI; } }
+
+        // ==================================================
+        // CanvasUI フィールドとプロパティ - Player
+        // ==================================================
+        protected PlayerInfoCanvasUI _playerInfoCanvasUI;
+        public PlayerInfoCanvasUI playerInfoCanvasUI { get { return _playerInfoCanvasUI; } }
 
         protected PlayerMPCanvasUI _playerMPCanvasUI;
-        public PlayerMPCanvasUI playerMPCanvasUI
-        {
-            get { return _playerMPCanvasUI; }
-        }
+        public PlayerMPCanvasUI playerMPCanvasUI { get { return _playerMPCanvasUI; } }
 
         protected PlayerMenuCanvasUI _playerMenuCanvasUI;
-        public PlayerMenuCanvasUI playerMenuCanvasUI
-        {
-            get { return _playerMenuCanvasUI; }
-        }
+        public PlayerMenuCanvasUI playerMenuCanvasUI { get { return _playerMenuCanvasUI; } }
 
-        protected PlayerInfoCanvasUI _playerInfoCanvasUI;
-        public PlayerInfoCanvasUI playerInfoCanvasUI
-        {
-            get { return _playerInfoCanvasUI; }
-        }
-
+        // ==================================================
+        // CanvasUI フィールドとプロパティ - Modal
+        // ==================================================
         protected DetailModalCanvasUI _detailModalCanvasUI;
-        public DetailModalCanvasUI detailModalCanvasUI
-        {
-            get { return _detailModalCanvasUI; }
-        }
+        public DetailModalCanvasUI detailModalCanvasUI { get { return _detailModalCanvasUI; } }
 
+        // ==================================================
+        // 初期化メソッド
+        // ==================================================
         protected override void InitCanvas()
         {
-            // BaseのInitCanvasを呼び出す（HeaderCanvasとFadeCanvasを初期化）
             base.InitCanvas();
-            // 各Canvasを取得
+            
+            // Enemy Canvas
             _enemyInfoCanvas = GameObject.Find("EnemyInfoCanvas").GetComponent<Canvas>();
+            
+            // Player Canvas
+            _playerInfoCanvas = GameObject.Find("PlayerInfoCanvas").GetComponent<Canvas>();
             _playerMPCanvas = GameObject.Find("PlayerMPCanvas").GetComponent<Canvas>();
             _playerMenuCanvas = GameObject.Find("PlayerMenuCanvas").GetComponent<Canvas>();
-            _playerInfoCanvas = GameObject.Find("PlayerInfoCanvas").GetComponent<Canvas>();
+            
+            // Modal Canvas
             _detailModalCanvas = GameObject.Find("DetailModalCanvas").GetComponent<Canvas>();
         }
 
         protected override void InitCanvasUI()
         {
-            // BaseのInitCanvasUIを呼び出す（HeaderCanvasUIとFadeCanvasUIを初期化）
             base.InitCanvasUI();
-            // CanvasUIの設定
+            
+            // Enemy CanvasUI
             _enemyInfoCanvasUI = _enemyInfoCanvas.GetComponent<EnemyInfoCanvasUI>();
+            
+            // Player CanvasUI
+            _playerInfoCanvasUI = _playerInfoCanvas.GetComponent<PlayerInfoCanvasUI>();
             _playerMPCanvasUI = _playerMPCanvas.GetComponent<PlayerMPCanvasUI>();
             _playerMenuCanvasUI = _playerMenuCanvas.GetComponent<PlayerMenuCanvasUI>();
-            _playerInfoCanvasUI = _playerInfoCanvas.GetComponent<PlayerInfoCanvasUI>();
+            
+            // Modal CanvasUI
             _detailModalCanvasUI = _detailModalCanvas.GetComponent<DetailModalCanvasUI>();
         }
 
         protected override void SetCanvasDisplay()
         {
-            // BaseのSetCanvasDisplayを呼び出す（HeaderCanvasとFadeCanvasを表示）
             base.SetCanvasDisplay();
-            // 各Canvasの初期表示を設定
+            
+            // Enemy Canvas初期表示
             _enemyInfoCanvas.enabled = true;
+            
+            // Player Canvas初期表示
+            _playerInfoCanvas.enabled = true;
             _playerMPCanvas.enabled = true;
             _playerMenuCanvas.enabled = true;
-            _playerInfoCanvas.enabled = true;
+            
+            // Modal Canvas初期表示（非表示）
             _detailModalCanvas.enabled = false;
         }
 
-        public void DisplayDetailModalCanvas(bool _isDisplay)
-        {
-            _detailModalCanvas.enabled = _isDisplay;
-        }
-
+        // ==================================================
+        // Canvas表示制御メソッド
+        // ==================================================
         public void DisplayEnemyInfoCanvas(bool _isDisplay)
         {
             _enemyInfoCanvas.enabled = _isDisplay;
+        }
+
+        public void DisplayPlayerInfoCanvas(bool _isDisplay)
+        {
+            _playerInfoCanvas.enabled = _isDisplay;
         }
 
         public void DisplayPlayerMPCanvas(bool _isDisplay)
@@ -95,9 +114,9 @@ namespace Assets.FEScripts.Scenes.Battle
             _playerMenuCanvas.enabled = _isDisplay;
         }
 
-        public void DisplayPlayerInfoCanvas(bool _isDisplay)
+        public void DisplayDetailModalCanvas(bool _isDisplay)
         {
-            _playerInfoCanvas.enabled = _isDisplay;
+            _detailModalCanvas.enabled = _isDisplay;
         }
     }
 }

@@ -17,6 +17,9 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
 {
     public class PlayerMPCanvasUI : AbstractCanvasUI
     {
+        // ==================================================
+        // フィールド
+        // ==================================================
         private OriginButtonComponent upButton;
         private OriginButtonComponent downButton;
         private mpIcon[] mpIcons = new mpIcon[10];
@@ -24,6 +27,10 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
         private OriginButtonComponent downAvailableButton;
         private TextMeshProUGUI currentAvailableMPText;
         private TextMeshProUGUI currentMPText;
+
+        // ==================================================
+        // 初期化
+        // ==================================================
 
         private void Awake()
         {
@@ -63,6 +70,9 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
                 downAvailableButton.InitOriginButtonComponent(_actions[3]);
         }
         
+        // ==================================================
+        // 公開メソッド - MP表示更新
+        // ==================================================
         /// <summary>
         /// MP表示を更新
         /// </summary>
@@ -90,6 +100,9 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
             }
         }
 
+        // ==================================================
+        // プライベートメソッド - MP表示制御
+        // ==================================================
         public void SetMPButton(int index, string status)
         {
             if (status == "active")

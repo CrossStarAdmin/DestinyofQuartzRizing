@@ -10,6 +10,9 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
 {
     public class PlayerInfoCanvasUI : AbstractCanvasUI
     {
+        // ==================================================
+        // フィールド
+        // ==================================================
         private Image characterImage;
         private TextMeshProUGUI hpText;
         private Slider hpSlider;
@@ -18,6 +21,10 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
         private OriginButtonComponent _hpAddButton;
         private CardComponent _tensionCardComponent;
         private CardComponent _holyCardComponent;
+
+        // ==================================================
+        // 初期化
+        // ==================================================
 
         private void Awake()
         {
@@ -50,7 +57,6 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
 
         public override void SetActions(Action[] _actions)
         {
-            // TODO: アクションの設定処理を実装
             _hpReduceButton.InitOriginButtonComponent(_actions[0]);
             _hpAddButton.InitOriginButtonComponent(_actions[1]);
             _tensionCardComponent.InitCardComponent(_actions[2]);
@@ -58,6 +64,9 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
             _tensionComponent.SetSkillAction(_actions[4]);
         }
 
+        // ==================================================
+        // 表示更新メソッド
+        // ==================================================
         private void SetCharacterImage(CharacterType characterType)
         {
             characterImage.sprite = Resources.Load<Sprite>("Images/Characters/Skelton/" + characterType.abbreviationName + ".skelton");
@@ -74,6 +83,9 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
             hpSlider.value = currentHP;
         }
 
+        // ==================================================
+        // 公開メソッド - 初期化
+        // ==================================================
         public void Init(
             CharacterType characterType,
             int maxHP,
@@ -92,6 +104,9 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
             // TODO: プレイヤー情報の表示更新処理を実装
         }
 
+        // ==================================================
+        // 公開メソッド - テンション・カード制御
+        // ==================================================
         public void SetTension(int tensionLevel)
         {
             _tensionComponent.SetTension(tensionLevel);

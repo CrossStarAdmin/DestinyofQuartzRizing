@@ -11,11 +11,18 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
 {
     public class EnemyInfoCanvasUI : AbstractCanvasUI
     {
+        // ==================================================
+        // フィールド
+        // ==================================================
         private Image characterImage;
         private TextMeshProUGUI hpText;
         private TextMeshProUGUI mpText;
         private Slider hpSlider;
         private TensionComponent _tensionComponent;
+
+        // ==================================================
+        // 初期化
+        // ==================================================
         private void Awake()
         {
             Canvas canvas = GameObject.Find("EnemyInfoCanvas").GetComponent<Canvas>();
@@ -40,9 +47,12 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
 
         public override void SetActions(Action[] _actions)
         {
-            // TODO: アクションの設定処理を実装
+            // アクション不要（表示専用）
         }
 
+        // ==================================================
+        // 表示更新メソッド
+        // ==================================================
         private void SetCharacterImage(CharacterType characterType)
         {
             characterImage.sprite = Resources.Load<Sprite>("Images/Characters/Skelton/" + characterType.abbreviationName + ".skelton");
@@ -64,6 +74,9 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
             mpText.text = currentMP.ToString();
         }
 
+        // ==================================================
+        // 公開メソッド
+        // ==================================================
         public void Init(
             CharacterType characterType,
             int maxHP,

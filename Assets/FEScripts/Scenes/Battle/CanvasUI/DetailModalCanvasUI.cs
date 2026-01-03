@@ -7,8 +7,14 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
 {
     public class DetailModalCanvasUI : AbstractCanvasUI
     {
+        // ==================================================
+        // フィールド
+        // ==================================================
         protected ModalManager _modalManager;
         
+        // ==================================================
+        // 初期化
+        // ==================================================
         private void Awake()
         {
             Canvas canvas = GameObject.Find("DetailModalCanvas").GetComponent<Canvas>();
@@ -25,10 +31,12 @@ namespace Assets.FEScripts.Scenes.Battle.CanvasUI
 
         public override void SetActions(Action[] _actions)
         {
-            // ModalManagerのアクションをセット
             _modalManager.SetActions(_actions);
         }
 
+        // ==================================================
+        // 公開メソッド
+        // ==================================================
         public void SetDetailModal(string title, string description)
         {
             _modalManager.InitializeElement(title, description);
