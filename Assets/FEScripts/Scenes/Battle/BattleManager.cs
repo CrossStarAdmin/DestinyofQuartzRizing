@@ -69,10 +69,15 @@ namespace Assets.FEScripts.Scene.Battle
                     },
                     () => {
                         UnityEngine.Debug.Log("Dice Button: Roll dice");
-                        // RollDice();
+                        RollDice();
                     }
                 }
             );
+
+            // DiceCanvasのアクション設定
+            ui.diceCanvasUI.SetActions(new Action[] {
+                () => ui.DisplayDiceCanvas(false)
+            });
 
             // DetailModalCanvasのアクション設定
             ui.detailModalCanvasUI.SetActions(
@@ -243,6 +248,13 @@ namespace Assets.FEScripts.Scene.Battle
             entity.DecrementPlayerAvailableMP();
             ui.playerMPCanvasUI.UpdateMPDisplay(entity.PlayerAvailableMP, entity.PlayerCurrentMP);
             ui.playerMPCanvasUI.SetMPText(entity.PlayerCurrentMP, entity.PlayerAvailableMP);
+        }
+
+        private async void RollDice()
+        {
+            UnityEngine.Debug.Log("Rolling dice");
+            ui.DisplayDiceCanvas(true);
+            await ui.diceCanvasUI.RollDice();
         }
 
         // ==================================================

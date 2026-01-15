@@ -14,6 +14,7 @@ namespace Assets.FEScripts.Scenes.Battle
         protected Canvas _playerInfoCanvas;
         protected Canvas _playerMPCanvas;
         protected Canvas _playerMenuCanvas;
+        protected Canvas _diceCanvas;
         protected Canvas _detailModalCanvas;
         
         // ==================================================
@@ -33,6 +34,12 @@ namespace Assets.FEScripts.Scenes.Battle
 
         protected PlayerMenuCanvasUI _playerMenuCanvasUI;
         public PlayerMenuCanvasUI playerMenuCanvasUI { get { return _playerMenuCanvasUI; } }
+
+        // ==================================================
+        // CanvasUI フィールドとプロパティ - Dice
+        // ==================================================
+        protected DiceCanvasUI _diceCanvasUI;
+        public DiceCanvasUI diceCanvasUI { get { return _diceCanvasUI; } }
 
         // ==================================================
         // CanvasUI フィールドとプロパティ - Modal
@@ -55,6 +62,9 @@ namespace Assets.FEScripts.Scenes.Battle
             _playerMPCanvas = GameObject.Find("PlayerMPCanvas").GetComponent<Canvas>();
             _playerMenuCanvas = GameObject.Find("PlayerMenuCanvas").GetComponent<Canvas>();
             
+            // Dice Canvas
+            _diceCanvas = GameObject.Find("DiceCanvas").GetComponent<Canvas>();
+            
             // Modal Canvas
             _detailModalCanvas = GameObject.Find("DetailModalCanvas").GetComponent<Canvas>();
         }
@@ -71,6 +81,9 @@ namespace Assets.FEScripts.Scenes.Battle
             _playerMPCanvasUI = _playerMPCanvas.GetComponent<PlayerMPCanvasUI>();
             _playerMenuCanvasUI = _playerMenuCanvas.GetComponent<PlayerMenuCanvasUI>();
             
+            // Dice CanvasUI
+            _diceCanvasUI = _diceCanvas.GetComponent<DiceCanvasUI>();
+            
             // Modal CanvasUI
             _detailModalCanvasUI = _detailModalCanvas.GetComponent<DetailModalCanvasUI>();
         }
@@ -86,6 +99,9 @@ namespace Assets.FEScripts.Scenes.Battle
             _playerInfoCanvas.enabled = true;
             _playerMPCanvas.enabled = true;
             _playerMenuCanvas.enabled = true;
+            
+            // Dice Canvas初期表示（非表示）
+            _diceCanvas.gameObject.SetActive(false);
             
             // Modal Canvas初期表示（非表示）
             _detailModalCanvas.enabled = false;
@@ -112,6 +128,11 @@ namespace Assets.FEScripts.Scenes.Battle
         public void DisplayPlayerMenuCanvas(bool _isDisplay)
         {
             _playerMenuCanvas.enabled = _isDisplay;
+        }
+
+        public void DisplayDiceCanvas(bool _isDisplay)
+        {
+            _diceCanvas.gameObject.SetActive(_isDisplay);
         }
 
         public void DisplayDetailModalCanvas(bool _isDisplay)
