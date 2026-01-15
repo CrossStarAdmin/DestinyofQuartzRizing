@@ -27,14 +27,13 @@ namespace Assets.FEScripts.Scene.Battle
 
         protected override void InitEvent()
         {
-            // HeaderCanvasのアクション設定
-            ui.headerCanvasUI.SetActions(
+            // BattleHeaderCanvasのアクション設定
+            ui.battleHeaderCanvasUI.SetActions(
                 new Action[] {
                     () => {
                         UnityEngine.Debug.Log("Back Button: Return to Menu");
                         SceneManager.LoadScene("MenuScene");
-                    },
-                    () => UnityEngine.Debug.Log("Question Button: Show Help")
+                    }
                 }
             );
 

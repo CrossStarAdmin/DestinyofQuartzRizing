@@ -10,6 +10,7 @@ namespace Assets.FEScripts.Scenes.Battle
         // ==================================================
         // Canvas フィールド
         // ==================================================
+        protected Canvas _battleHeaderCanvas;
         protected Canvas _enemyInfoCanvas;
         protected Canvas _playerInfoCanvas;
         protected Canvas _playerMPCanvas;
@@ -17,6 +18,12 @@ namespace Assets.FEScripts.Scenes.Battle
         protected Canvas _diceCanvas;
         protected Canvas _detailModalCanvas;
         
+        // ==================================================
+        // CanvasUI フィールドとプロパティ - Header
+        // ==================================================
+        protected BattleHeaderCanvasUI _battleHeaderCanvasUI;
+        public BattleHeaderCanvasUI battleHeaderCanvasUI { get { return _battleHeaderCanvasUI; } }
+
         // ==================================================
         // CanvasUI フィールドとプロパティ - Enemy
         // ==================================================
@@ -54,6 +61,9 @@ namespace Assets.FEScripts.Scenes.Battle
         {
             base.InitCanvas();
             
+            // Header Canvas
+            _battleHeaderCanvas = GameObject.Find("HeaderCanvas").GetComponent<Canvas>();
+            
             // Enemy Canvas
             _enemyInfoCanvas = GameObject.Find("EnemyInfoCanvas").GetComponent<Canvas>();
             
@@ -72,6 +82,9 @@ namespace Assets.FEScripts.Scenes.Battle
         protected override void InitCanvasUI()
         {
             base.InitCanvasUI();
+            
+            // Header CanvasUI
+            _battleHeaderCanvasUI = _battleHeaderCanvas.GetComponent<BattleHeaderCanvasUI>();
             
             // Enemy CanvasUI
             _enemyInfoCanvasUI = _enemyInfoCanvas.GetComponent<EnemyInfoCanvasUI>();
@@ -92,6 +105,9 @@ namespace Assets.FEScripts.Scenes.Battle
         {
             base.SetCanvasDisplay();
             
+            // Header Canvas初期表示
+            _battleHeaderCanvas.enabled = true;
+            
             // Enemy Canvas初期表示
             _enemyInfoCanvas.enabled = true;
             
@@ -110,6 +126,11 @@ namespace Assets.FEScripts.Scenes.Battle
         // ==================================================
         // Canvas表示制御メソッド
         // ==================================================
+        public void DisplayBattleHeaderCanvas(bool _isDisplay)
+        {
+            _battleHeaderCanvas.enabled = _isDisplay;
+        }
+
         public void DisplayEnemyInfoCanvas(bool _isDisplay)
         {
             _enemyInfoCanvas.enabled = _isDisplay;
